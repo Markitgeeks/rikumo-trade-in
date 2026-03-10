@@ -9,8 +9,9 @@ const paths = [
     description:
       "Browse our curated collection of Japanese-inspired home goods, ceramics, textiles, and everyday objects. Full retail pricing with complimentary gift wrapping on orders over $100.",
     cta: "Continue Shopping",
-    href: "#",
+    href: "https://rikumo.com/collections/yuka-picks",
     color: "warm",
+    external: true,
   },
   {
     icon: Palette,
