@@ -67,33 +67,36 @@ export default function ProcessFlow() {
       id="process"
       ref={sectionRef}
       className="bg-white"
-      style={{ borderTop: "1px solid rgba(32,32,32,0.1)", borderBottom: "1px solid rgba(32,32,32,0.1)" }}
+      style={{ borderBottom: "1px solid rgba(32,32,32,0.1)" }}
     >
-      <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
+      <div className="max-w-[1300px] mx-auto px-[30px] py-16 md:py-20">
         <div className="grid md:grid-cols-2 gap-16">
           {/* Left — sticky */}
-          <div className="md:sticky md:top-[90px] md:self-start">
+          <div className="md:sticky md:top-[80px] md:self-start">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <p className="text-warm-500 text-[12px] tracking-[0.15em] uppercase mb-3">
+              <p className="text-warm-400 text-[11px] tracking-[0.15em] uppercase mb-3">
                 How It Works
               </p>
-              <h2 className="font-serif text-[32px] md:text-[40px] font-bold text-warm-700 leading-[1.1] mb-4">
+              <h2
+                className="font-serif text-[24px] md:text-[28px] text-warm-700 leading-[1.2] mb-4"
+                style={{ fontWeight: 400 }}
+              >
                 From application
                 <br />
-                to <em className="font-normal">trade pricing</em>
+                to <em>trade pricing</em>
               </h2>
-              <p className="text-warm-500 text-[15px] leading-[1.6] mb-10 max-w-sm">
+              <p className="text-warm-500 text-[14px] leading-[1.6] mb-10 max-w-sm">
                 A straightforward process designed to get you access to designer
                 pricing as quickly as possible.
               </p>
             </motion.div>
 
             {/* Dynamic image */}
-            <div className="relative aspect-[4/3] overflow-hidden hidden md:block bg-cream-dark rounded-[5px]">
+            <div className="relative aspect-[4/3] overflow-hidden hidden md:block bg-cream-dark">
               {steps.map((step, i) => (
                 <motion.img
                   key={step.num}
@@ -119,7 +122,7 @@ export default function ProcessFlow() {
             {/* Progress track */}
             <div className="absolute left-[23px] top-0 bottom-0 w-px bg-warm-200 hidden md:block">
               <motion.div
-                className="w-full bg-sage-500 origin-top"
+                className="w-full bg-warm-700 origin-top"
                 style={{ height: progressHeight }}
               />
             </div>
@@ -158,6 +161,7 @@ export default function ProcessFlow() {
                     >
                       <Icon
                         size={18}
+                        strokeWidth={1.5}
                         className={
                           isCurrent
                             ? "text-white"
@@ -177,13 +181,14 @@ export default function ProcessFlow() {
                         Step {step.num}
                       </p>
                       <h3
-                        className={`font-serif text-[22px] font-bold mb-2 transition-colors duration-300 ${
+                        className={`font-serif text-[20px] mb-2 transition-colors duration-300 ${
                           isCurrent ? "text-warm-700" : "text-warm-500"
                         }`}
+                        style={{ fontWeight: 400 }}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-warm-500 text-[14px] leading-[1.6] max-w-sm">
+                      <p className="text-warm-500 text-[13px] leading-[1.6] max-w-sm">
                         {step.description}
                       </p>
                     </motion.div>

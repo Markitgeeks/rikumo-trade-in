@@ -3,12 +3,10 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ThreePaths from "./components/ThreePaths";
 import ValueProps from "./components/ValueProps";
+import ProcessFlow from "./components/ProcessFlow";
 import ProductShowcase from "./components/ProductShowcase";
 import Testimonials from "./components/Testimonials";
-import FeatureCards from "./components/FeatureCards";
-import ConceptStore from "./components/ConceptStore";
-import Journal from "./components/Journal";
-import Instagram from "./components/Instagram";
+import CtaBanner from "./components/CtaBanner";
 import WholesaleBlock from "./components/WholesaleBlock";
 import Footer from "./components/Footer";
 import StickyBar from "./components/StickyBar";
@@ -29,12 +27,10 @@ export default function App() {
       <Hero onApplyClick={openForm} />
       <ThreePaths onApplyClick={openForm} />
       <ValueProps />
+      <ProcessFlow />
       <ProductShowcase isApproved={isApproved} />
       <Testimonials />
-      <FeatureCards />
-      <ConceptStore />
-      <Journal />
-      <Instagram />
+      <CtaBanner onApplyClick={openForm} />
       <WholesaleBlock />
       <Footer />
       <StickyBar />
