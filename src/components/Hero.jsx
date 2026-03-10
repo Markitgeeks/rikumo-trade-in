@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
-export default function Hero() {
+export default function Hero({ onApplyClick }) {
   return (
     <section className="relative h-[90vh] min-h-[600px] overflow-hidden">
       {/* Background image */}
@@ -35,7 +35,7 @@ export default function Hero() {
         className="absolute bottom-28 right-8 w-36 h-48 md:w-52 md:h-72 rounded-sm overflow-hidden shadow-2xl hidden lg:block"
       >
         <img
-          src="https://images.unsplash.com/photo-1528396518501-b53b428ed002?w=300&q=80"
+          src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=300&q=80"
           alt="Japanese textiles"
           className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
         />
@@ -89,12 +89,12 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <a
-            href="#apply"
-            className="px-10 py-3.5 bg-white text-warm-900 text-sm tracking-widest uppercase font-medium hover:bg-warm-100 transition-all duration-300 no-underline"
+          <button
+            onClick={onApplyClick}
+            className="px-10 py-3.5 bg-white text-warm-900 text-sm tracking-widest uppercase font-medium hover:bg-warm-100 transition-all duration-300 cursor-pointer border-0"
           >
             Apply for Trade
-          </a>
+          </button>
           <a
             href="#paths"
             className="px-10 py-3.5 border border-warm-400/50 text-warm-200 text-sm tracking-widest uppercase hover:bg-white/10 transition-all duration-300 no-underline"

@@ -57,7 +57,7 @@ const products = [
     retail: 120,
     eligible: true,
     image:
-      "https://images.unsplash.com/photo-1610701596007-11502f7f2814?w=500&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=500&h=600&fit=crop&q=80",
   },
   {
     name: "Linen Kaya Cloth — Set of 3",
@@ -65,7 +65,7 @@ const products = [
     retail: 34,
     eligible: false,
     image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=500&h=600&fit=crop&q=80",
   },
 ];
 
