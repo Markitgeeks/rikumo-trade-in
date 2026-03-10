@@ -39,4 +39,14 @@
   #root {
     min-height: 100vh;
   }
+  ::selection {
+    background-color: #c9d4c5;
+    color: #1e1b18;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }

@@ -1,122 +1,113 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 
 export default function Hero({ onApplyClick }) {
   return (
-    <section className="relative h-[90vh] min-h-[600px] overflow-hidden">
-      {/* Background image */}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1545083036-b175dd155a1d?w=1920&q=80"
-          alt="Japanese ceramics"
-          className="w-full h-full object-cover"
+          alt=""
+          className="w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-warm-900/70 via-warm-900/50 to-warm-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-warm-900/90 via-warm-900/60 to-warm-900/30" />
       </div>
 
-      {/* Floating accent images */}
-      <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.2, delay: 0.6 }}
-        className="absolute top-20 left-8 w-32 h-44 md:w-48 md:h-64 rounded-sm overflow-hidden shadow-2xl hidden lg:block"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=300&q=80"
-          alt="Japanese pottery"
-          className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-        />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.2, delay: 0.8 }}
-        className="absolute bottom-28 right-8 w-36 h-48 md:w-52 md:h-72 rounded-sm overflow-hidden shadow-2xl hidden lg:block"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?w=300&q=80"
-          alt="Japanese textiles"
-          className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-        />
-      </motion.div>
-
-      {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mb-6"
-        >
-          <div className="w-px h-12 bg-warm-400/50 mx-auto mb-6" />
-          <p className="text-warm-300/80 text-xs tracking-[0.4em] uppercase">
-            Rikumo &middot; Est. Philadelphia
-          </p>
-        </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-serif text-4xl md:text-6xl lg:text-7xl font-light leading-tight mb-6 text-white"
-        >
-          Trade & Professional
-          <br />
-          <motion.span
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full py-32">
+        <div className="max-w-2xl">
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="italic text-warm-300"
+            transition={{ duration: 1 }}
           >
-            Program
-          </motion.span>
-        </motion.h2>
+            <div className="flex items-center gap-3 mb-10">
+              <div className="w-8 h-px bg-warm-400" />
+              <span className="text-warm-400 text-[11px] tracking-[0.35em] uppercase">
+                Trade & Professional
+              </span>
+            </div>
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-warm-300/90 text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10"
-        >
-          Curated Japanese-inspired home goods for designers, architects,
-          and discerning retail customers.
-        </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] font-light leading-[1.05] text-white mb-8 text-balance"
+          >
+            Designed for
+            <br />
+            those who
+            <br />
+            <em className="text-warm-300 not-italic font-serif">design.</em>
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4"
-        >
-          <button
-            onClick={onApplyClick}
-            className="px-10 py-3.5 bg-white text-warm-900 text-sm tracking-widest uppercase font-medium hover:bg-warm-100 transition-all duration-300 cursor-pointer border-0"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="text-warm-300/90 text-base md:text-lg leading-relaxed max-w-md mb-12"
           >
-            Apply for Trade
-          </button>
-          <a
-            href="#paths"
-            className="px-10 py-3.5 border border-warm-400/50 text-warm-200 text-sm tracking-widest uppercase hover:bg-white/10 transition-all duration-300 no-underline"
+            Exclusive trade pricing for interior designers, architects, and
+            design studios. Apply once, save 15% on every eligible order.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col sm:flex-row items-start gap-4"
           >
-            Explore Programs
-          </a>
-        </motion.div>
+            <button
+              onClick={onApplyClick}
+              className="group px-8 py-4 bg-white text-warm-900 text-[13px] tracking-[0.12em] uppercase font-medium hover:bg-sage-500 hover:text-white transition-all duration-400 cursor-pointer border-0"
+            >
+              Apply for Trade Access
+            </button>
+            <a
+              href="#programs"
+              className="px-8 py-4 text-[13px] tracking-[0.12em] uppercase text-warm-300 hover:text-white transition-colors duration-300 no-underline"
+            >
+              Learn More
+            </a>
+          </motion.div>
+
+          {/* Stats strip */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex gap-10 md:gap-14 mt-20 pt-8 border-t border-white/10"
+          >
+            {[
+              { value: "15%", label: "Trade Discount" },
+              { value: "500+", label: "Design Partners" },
+              { value: "2-3", label: "Days to Approve" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="font-serif text-2xl md:text-3xl text-white mb-1">
+                  {stat.value}
+                </p>
+                <p className="text-warm-500 text-[11px] tracking-[0.1em] uppercase">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Side image accent */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.2, delay: 0.6 }}
+        className="absolute right-0 top-0 bottom-0 w-[35%] hidden xl:block"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <ChevronDown size={24} className="text-warm-400/60" />
-        </motion.div>
+        <img
+          src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80"
+          alt=""
+          className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+        />
       </motion.div>
     </section>
   );

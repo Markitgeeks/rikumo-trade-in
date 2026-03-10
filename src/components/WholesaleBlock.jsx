@@ -1,90 +1,64 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Building2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export default function WholesaleBlock() {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1493934558415-9d19f0b2b4d2?w=1920&q=80"
-          alt="Warehouse"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-warm-900/85" />
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          {/* Image */}
+    <section className="py-24 md:py-32 border-t border-warm-200">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="grid md:grid-cols-12 gap-10 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:w-2/5 hidden md:block"
+            className="md:col-span-5"
           >
-            <div className="relative">
+            <div className="aspect-[4/5] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=500&h=600&fit=crop&q=80"
-                alt="Wholesale products"
-                className="w-full h-80 object-cover shadow-2xl"
+                src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&h=750&fit=crop&q=80"
+                alt="Wholesale"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute -bottom-4 -right-4 bg-warm-800 text-warm-300 text-xs tracking-[0.2em] uppercase px-4 py-2">
-                Morihata &middot; B2B
-              </div>
             </div>
           </motion.div>
 
-          {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:w-3/5 text-center md:text-left"
+            transition={{ delay: 0.15 }}
+            className="md:col-span-6 md:col-start-7"
           >
-            <div className="w-14 h-14 bg-warm-800 rounded-full flex items-center justify-center mb-6 mx-auto md:mx-0">
-              <Building2 size={24} className="text-warm-400" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-warm-400" />
+              <span className="text-warm-400 text-[11px] tracking-[0.35em] uppercase">
+                Wholesale
+              </span>
             </div>
 
-            <p className="text-warm-500 text-xs tracking-[0.3em] uppercase mb-4">
-              Wholesale & Retail Partners
+            <h2 className="font-serif text-3xl md:text-4xl font-light text-warm-900 mb-4 leading-tight">
+              Looking for volume
+              <br />
+              pricing?
+            </h2>
+
+            <p className="text-warm-500 text-sm leading-relaxed mb-8 max-w-md">
+              For wholesale purchasing and retail partner accounts, our sister
+              brand <strong className="text-warm-800">Morihata</strong> handles
+              all B2B relationships with dedicated account management, NET terms,
+              and full product catalog access.
             </p>
-
-            <h3 className="font-serif text-2xl md:text-4xl font-light text-white mb-4">
-              Looking for Wholesale Pricing?
-            </h3>
-
-            <p className="text-warm-400 text-sm md:text-base leading-relaxed max-w-xl mb-4">
-              For wholesale purchasing and retail partner accounts, please
-              continue to{" "}
-              <strong className="text-warm-200">Morihata.com</strong> — our
-              dedicated B2B platform with volume pricing, NET terms, and
-              dedicated account management.
-            </p>
-
-            <ul className="text-warm-400/80 text-sm space-y-2 mb-8 text-left max-w-md mx-auto md:mx-0">
-              <li className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-warm-500 rounded-full" />
-                Volume pricing & NET payment terms
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-warm-500 rounded-full" />
-                Dedicated wholesale account manager
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-warm-500 rounded-full" />
-                Full product catalog & linesheet access
-              </li>
-            </ul>
 
             <a
               href="https://morihata.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 border border-warm-500 text-warm-200 text-sm tracking-widest uppercase hover:bg-white hover:text-warm-900 transition-all duration-300 no-underline"
+              className="group inline-flex items-center gap-2 text-[13px] tracking-[0.08em] text-warm-900 font-medium no-underline pb-1 border-b border-warm-900 hover:border-sage-500 hover:text-sage-600 transition-colors"
             >
-              Visit Morihata Wholesale
-              <ExternalLink size={14} />
+              Visit Morihata.com
+              <ArrowUpRight
+                size={14}
+                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+              />
             </a>
           </motion.div>
         </div>

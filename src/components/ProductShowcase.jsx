@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Tag, Eye, ShoppingCart, Heart } from "lucide-react";
+import { ShieldCheck, Tag, Heart } from "lucide-react";
 
 const products = [
   {
@@ -51,34 +51,17 @@ const products = [
     image:
       "https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=500&h=600&fit=crop&q=80",
   },
-  {
-    name: "Tochi Wood Serving Bowl",
-    category: "Kitchen",
-    retail: 120,
-    eligible: true,
-    image:
-      "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=500&h=600&fit=crop&q=80",
-  },
-  {
-    name: "Linen Kaya Cloth — Set of 3",
-    category: "Textiles",
-    retail: 34,
-    eligible: false,
-    image:
-      "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=500&h=600&fit=crop&q=80",
-  },
 ];
 
-function formatPrice(amount) {
-  return `$${amount.toFixed(2)}`;
+function formatPrice(n) {
+  return `$${n.toFixed(0)}`;
 }
 
-function tradePrice(retail) {
-  return retail * 0.85;
+function tradePrice(n) {
+  return n * 0.85;
 }
 
 function ProductCard({ product, isApproved, index }) {
-  const [hovered, setHovered] = useState(false);
   const [liked, setLiked] = useState(false);
 
   return (
@@ -86,127 +69,69 @@ function ProductCard({ product, isApproved, index }) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
+      transition={{ duration: 0.5, delay: index * 0.07 }}
       className="group"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative aspect-[4/5] bg-warm-100 overflow-hidden mb-4">
+      <div className="relative aspect-[3/4] overflow-hidden bg-warm-100 mb-5">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
         />
 
-        {/* Hover overlay with actions */}
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="absolute inset-0 bg-warm-900/20 flex items-end justify-center pb-4"
-            >
-              <div className="flex gap-2">
-                <motion.button
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
-                  transition={{ delay: 0 }}
-                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-warm-900 hover:text-white transition-colors cursor-pointer border-0"
-                  title="Quick view"
-                >
-                  <Eye size={16} />
-                </motion.button>
-                <motion.button
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
-                  transition={{ delay: 0.05 }}
-                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-warm-900 hover:text-white transition-colors cursor-pointer border-0"
-                  title="Add to cart"
-                >
-                  <ShoppingCart size={16} />
-                </motion.button>
-                <motion.button
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 20, opacity: 0 }}
-                  transition={{ delay: 0.1 }}
-                  onClick={() => setLiked(!liked)}
-                  className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-colors cursor-pointer border-0 ${
-                    liked
-                      ? "bg-red-500 text-white"
-                      : "bg-white hover:bg-warm-900 hover:text-white"
-                  }`}
-                  title="Wishlist"
-                >
-                  <Heart size={16} fill={liked ? "currentColor" : "none"} />
-                </motion.button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Wishlist */}
+        <button
+          onClick={() => setLiked(!liked)}
+          className="absolute top-4 right-4 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer border-0 hover:bg-white"
+        >
+          <Heart
+            size={15}
+            className={liked ? "text-red-500" : "text-warm-600"}
+            fill={liked ? "currentColor" : "none"}
+          />
+        </button>
 
-        {/* Badges */}
+        {/* Trade badge */}
         {isApproved && product.eligible && (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="absolute top-3 right-3 bg-sage-500 text-white text-[10px] tracking-wider uppercase px-2.5 py-1 flex items-center gap-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-sage-900/80 to-transparent px-4 py-3"
           >
-            <Tag size={10} />
-            Trade Eligible
+            <span className="text-white text-[10px] tracking-[0.15em] uppercase flex items-center gap-1.5">
+              <Tag size={10} />
+              Trade Eligible — Save {formatPrice(product.retail - tradePrice(product.retail))}
+            </span>
           </motion.div>
         )}
         {isApproved && !product.eligible && (
-          <div className="absolute top-3 right-3 bg-warm-500/80 text-white text-[10px] tracking-wider uppercase px-2.5 py-1">
-            Retail Only
-          </div>
-        )}
-
-        {/* Wishlist heart on top-left */}
-        {liked && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="absolute top-3 left-3"
-          >
-            <Heart size={18} className="text-red-500" fill="currentColor" />
-          </motion.div>
-        )}
-
-        {/* Savings badge for approved */}
-        {isApproved && product.eligible && (
-          <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-sage-600 text-[11px] font-medium px-2 py-1">
-            Save {formatPrice(product.retail - tradePrice(product.retail))}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-warm-900/60 to-transparent px-4 py-3">
+            <span className="text-warm-300 text-[10px] tracking-[0.15em] uppercase">
+              Retail pricing only
+            </span>
           </div>
         )}
       </div>
 
-      <p className="text-[11px] text-warm-400 uppercase tracking-wider mb-1">
+      <p className="text-[10px] text-warm-400 tracking-[0.2em] uppercase mb-2">
         {product.category}
       </p>
-      <h4 className="text-sm font-medium text-warm-900 mb-2 leading-snug group-hover:text-sage-600 transition-colors">
+      <h4 className="text-sm text-warm-900 mb-3 leading-snug group-hover:text-sage-600 transition-colors">
         {product.name}
       </h4>
 
-      <div className="flex items-baseline gap-2">
+      <div className="flex items-baseline gap-2.5">
         {isApproved && product.eligible ? (
           <>
-            <span className="text-sage-600 font-semibold text-sm">
+            <span className="text-sage-600 font-medium">
               {formatPrice(tradePrice(product.retail))}
             </span>
-            <span className="text-warm-400 line-through text-xs">
+            <span className="text-warm-300 line-through text-sm">
               {formatPrice(product.retail)}
-            </span>
-            <span className="text-sage-500 text-[10px] tracking-wider uppercase font-medium bg-sage-50 px-1.5 py-0.5">
-              15% off
             </span>
           </>
         ) : (
-          <span className="text-warm-800 font-medium text-sm">
+          <span className="text-warm-800 font-medium">
             {formatPrice(product.retail)}
           </span>
         )}
@@ -217,38 +142,58 @@ function ProductCard({ product, isApproved, index }) {
 
 export default function ProductShowcase({ isApproved }) {
   return (
-    <section id="products" className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="collection" className="py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-6"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14"
         >
-          <p className="text-warm-500 text-xs tracking-[0.3em] uppercase mb-4">
-            {isApproved ? "Your Designer Trade Pricing" : "Product Preview"}
-          </p>
-          <h3 className="font-serif text-3xl md:text-5xl font-light text-warm-900 mb-4">
-            {isApproved ? "Exclusive Trade Pricing" : "Curated Collection"}
-          </h3>
-          {isApproved && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 bg-sage-50 border border-sage-200 px-5 py-2.5 rounded-full text-sm text-sage-600 mb-2"
-            >
-              <ShieldCheck size={16} />
-              You're viewing Designer Trade pricing — 15% off eligible items
-            </motion.div>
-          )}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-warm-400" />
+              <span className="text-warm-400 text-[11px] tracking-[0.35em] uppercase">
+                {isApproved ? "Trade Collection" : "Featured Products"}
+              </span>
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl font-light text-warm-900 leading-tight">
+              {isApproved ? (
+                <>
+                  Your trade
+                  <br />
+                  <em className="not-italic text-sage-600">pricing</em>
+                </>
+              ) : (
+                <>
+                  Curated
+                  <br />
+                  collection
+                </>
+              )}
+            </h2>
+          </div>
+
+          <div className="flex flex-col items-start md:items-end gap-3">
+            {isApproved && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex items-center gap-2 bg-sage-50 px-4 py-2 text-sage-600 text-[12px] tracking-wide"
+              >
+                <ShieldCheck size={14} />
+                Designer Trade pricing active
+              </motion.div>
+            )}
+            <p className="text-warm-400 text-xs">
+              * 15% trade discount applies to eligible products only
+            </p>
+          </div>
         </motion.div>
 
-        <p className="text-center text-warm-400 text-xs mb-12">
-          * Designer Trade discount (15% off) applies only to eligible products,
-          not all items. Hover over products to interact.
-        </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10 lg:gap-x-8 lg:gap-y-14">
           {products.map((product, i) => (
             <ProductCard
               key={product.name}
