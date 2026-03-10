@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Hero({ onApplyClick }) {
   return (
     <section className="relative overflow-hidden">
-      {/* Background video/image */}
+      {/* Background video/image — full width, taller */}
       <div className="absolute inset-0">
         <video
           autoPlay
@@ -18,86 +18,45 @@ export default function Hero({ onApplyClick }) {
             type="video/mp4"
           />
         </video>
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
-      {/* Content overlay */}
-      <div className="relative max-w-[1300px] mx-auto px-8 py-32 md:py-44 flex flex-col items-center text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-white/80 text-[13px] tracking-[0.2em] uppercase mb-5"
-        >
-          Trade & Professional Program
-        </motion.p>
-
+      {/* Content — left aligned like Framer */}
+      <div className="relative max-w-[1300px] mx-auto px-[30px] py-28 md:py-40 lg:py-48">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-serif text-[40px] md:text-[56px] lg:text-[64px] leading-[1.1] font-bold text-white mb-6 max-w-3xl"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="font-serif text-[36px] md:text-[48px] lg:text-[56px] leading-[1.15] text-white mb-4 max-w-lg"
+          style={{ fontWeight: 400, fontStyle: "italic" }}
         >
-          Designed for those
-          <br />
-          who <em className="font-normal">design.</em>
+          Objects For Intentional Living.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-white/80 text-[16px] md:text-[18px] leading-[1.6] max-w-lg mb-10"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="text-white/70 text-[14px] md:text-[15px] leading-[1.5] max-w-md mb-8"
+          style={{ fontWeight: 400 }}
         >
-          Exclusive trade pricing for interior designers, architects, and
-          design studios. Apply once, save on every eligible order.
+          Curated Japanese Design For The Modern Home.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center gap-5"
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
           <button
             onClick={onApplyClick}
-            className="px-8 py-3.5 bg-white text-warm-700 text-[14px] tracking-wide hover:bg-cream transition-colors cursor-pointer border-0"
+            className="px-6 py-3 bg-transparent text-white text-[13px] tracking-wide cursor-pointer transition-colors hover:bg-white hover:text-warm-700"
+            style={{ border: "1px solid rgba(255,255,255,0.8)" }}
           >
-            Apply for Trade
+            Explore Collection
           </button>
-          <a
-            href="#programs"
-            className="text-[14px] text-white underline underline-offset-4 decoration-white/40 hover:decoration-white transition-colors"
-          >
-            Learn more
-          </a>
         </motion.div>
       </div>
-
-      {/* Stats bar */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="relative border-t border-white/15"
-      >
-        <div className="max-w-[1300px] mx-auto px-8 py-6 flex justify-center gap-12 md:gap-20">
-          {[
-            { value: "15%", label: "Trade Discount" },
-            { value: "500+", label: "Design Partners" },
-            { value: "2–3 days", label: "Approval Time" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-serif text-[24px] md:text-[28px] font-bold text-white leading-none mb-1">
-                {stat.value}
-              </p>
-              <p className="text-white/60 text-[11px] tracking-[0.1em] uppercase">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }
