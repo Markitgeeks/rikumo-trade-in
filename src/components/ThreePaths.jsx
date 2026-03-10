@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShoppingBag, Palette, Building2 } from "lucide-react";
+import { ShoppingBag, Palette, Building2, ArrowRight } from "lucide-react";
 
 const paths = [
   {
@@ -12,6 +12,8 @@ const paths = [
     href: "https://rikumo.com/collections/yuka-picks",
     color: "warm",
     external: true,
+    image:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: Palette,
@@ -23,6 +25,8 @@ const paths = [
     href: "#apply",
     color: "sage",
     featured: true,
+    image:
+      "https://images.unsplash.com/photo-1618220179428-22790b461013?w=600&h=400&fit=crop&q=80",
   },
   {
     icon: Building2,
@@ -34,15 +38,17 @@ const paths = [
     href: "https://morihata.com",
     color: "accent",
     external: true,
+    image:
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop&q=80",
   },
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 50 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.15 },
+    transition: { duration: 0.6, delay: i * 0.2 },
   }),
 };
 
@@ -59,9 +65,12 @@ export default function ThreePaths({ onApplyClick }) {
           <p className="text-warm-500 text-xs tracking-[0.3em] uppercase mb-4">
             Choose Your Path
           </p>
-          <h3 className="font-serif text-3xl md:text-5xl font-light text-warm-900">
+          <h3 className="font-serif text-3xl md:text-5xl font-light text-warm-900 mb-4">
             Three Ways to Shop
           </h3>
+          <p className="text-warm-500 text-sm max-w-lg mx-auto">
+            Whether you're furnishing your home, specifying for clients, or stocking your shelves — we have a program tailored for you.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
@@ -75,64 +84,81 @@ export default function ThreePaths({ onApplyClick }) {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={cardVariants}
-                className={`group relative bg-white rounded-sm border transition-all duration-300 hover:shadow-lg ${
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className={`group relative bg-white rounded-sm overflow-hidden border transition-all duration-300 hover:shadow-xl ${
                   path.featured
-                    ? "border-sage-300 shadow-md ring-1 ring-sage-200"
+                    ? "border-sage-300 shadow-lg ring-1 ring-sage-200"
                     : "border-warm-200 hover:border-warm-300"
                 }`}
               >
                 {path.featured && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-sage-500 text-white text-[10px] tracking-[0.2em] uppercase px-4 py-1 rounded-full">
-                    Recommended for Designers
+                  <div className="absolute top-4 right-4 z-20 bg-sage-500 text-white text-[10px] tracking-[0.2em] uppercase px-3 py-1 rounded-full">
+                    Recommended
                   </div>
                 )}
 
-                <div className="p-8 md:p-10 flex flex-col h-full">
-                  <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center mb-6 ${
-                      path.featured
-                        ? "bg-sage-100 text-sage-600"
-                        : "bg-warm-100 text-warm-600"
-                    }`}
-                  >
-                    <Icon size={22} />
+                {/* Card image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={path.image}
+                    alt={path.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-sm ${
+                        path.featured
+                          ? "bg-sage-500/90 text-white"
+                          : "bg-white/90 text-warm-700"
+                      }`}
+                    >
+                      <Icon size={18} />
+                    </div>
                   </div>
+                </div>
 
-                  <p className="text-xs tracking-[0.2em] uppercase text-warm-500 mb-2">
+                <div className="p-6 md:p-8 flex flex-col flex-1">
+                  <p className="text-xs tracking-[0.2em] uppercase text-warm-400 mb-2">
                     {path.label}
                   </p>
 
-                  <h4 className="font-serif text-2xl font-medium text-warm-900 mb-4">
+                  <h4 className="font-serif text-xl font-medium text-warm-900 mb-3">
                     {path.title}
                   </h4>
 
-                  <p className="text-warm-600 text-sm leading-relaxed mb-8 flex-1">
+                  <p className="text-warm-500 text-sm leading-relaxed mb-6 flex-1">
                     {path.description}
                   </p>
 
                   {path.label === "Designer Trade" ? (
                     <button
                       onClick={onApplyClick}
-                      className={`w-full py-3 text-sm tracking-widest uppercase font-medium transition-all duration-300 cursor-pointer border-0 ${
-                        path.featured
-                          ? "bg-sage-500 text-white hover:bg-sage-600"
-                          : "bg-warm-900 text-white hover:bg-warm-800"
-                      }`}
+                      className="w-full py-3 text-sm tracking-widest uppercase font-medium transition-all duration-300 cursor-pointer border-0 bg-sage-500 text-white hover:bg-sage-600 flex items-center justify-center gap-2 group/btn"
                     >
                       {path.cta}
+                      <ArrowRight
+                        size={14}
+                        className="group-hover/btn:translate-x-1 transition-transform"
+                      />
                     </button>
                   ) : (
                     <a
                       href={path.href}
                       target={path.external ? "_blank" : undefined}
                       rel={path.external ? "noopener noreferrer" : undefined}
-                      className={`block w-full py-3 text-sm tracking-widest uppercase font-medium text-center transition-all duration-300 no-underline ${
-                        path.external
+                      className={`flex items-center justify-center gap-2 w-full py-3 text-sm tracking-widest uppercase font-medium text-center transition-all duration-300 no-underline group/btn ${
+                        path.label === "Wholesale"
                           ? "bg-warm-200 text-warm-700 hover:bg-warm-300"
                           : "bg-warm-900 text-white hover:bg-warm-800"
                       }`}
                     >
                       {path.cta}
+                      <ArrowRight
+                        size={14}
+                        className="group-hover/btn:translate-x-1 transition-transform"
+                      />
                     </a>
                   )}
                 </div>

@@ -3,8 +3,10 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ThreePaths from "./components/ThreePaths";
 import ApplicationForm from "./components/ApplicationForm";
-import ProductShowcase from "./components/ProductShowcase";
 import ProcessFlow from "./components/ProcessFlow";
+import ProductShowcase from "./components/ProductShowcase";
+import Testimonials from "./components/Testimonials";
+import Gallery from "./components/Gallery";
 import WholesaleBlock from "./components/WholesaleBlock";
 import Footer from "./components/Footer";
 
@@ -22,6 +24,8 @@ export default function App() {
       <ThreePaths onApplyClick={() => setFormOpen(true)} />
       <ProcessFlow />
       <ProductShowcase isApproved={isApproved} />
+      <Testimonials />
+      <Gallery />
       <WholesaleBlock />
       <Footer />
       <ApplicationForm isOpen={formOpen} onClose={() => setFormOpen(false)} />
