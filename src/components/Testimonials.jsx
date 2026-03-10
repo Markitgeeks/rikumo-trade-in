@@ -37,80 +37,78 @@ export default function Testimonials() {
   const next = () => setActive((a) => (a + 1) % testimonials.length);
   const prev = () =>
     setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
-
   const t = testimonials[active];
 
   return (
-    <section className="py-24 md:py-32 bg-warm-100/40">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid md:grid-cols-12 gap-12 items-center">
-          {/* Left — image + nav */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="md:col-span-4"
-          >
+    <section id="testimonials" className="border-b border-border">
+      <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
+        <div className="grid md:grid-cols-12 gap-12 items-start">
+          {/* Left */}
+          <div className="md:col-span-4">
+            <p className="text-warm-500 text-[13px] tracking-wide mb-3">
+              Testimonials
+            </p>
+            <h2 className="font-serif text-[36px] font-bold text-warm-900 leading-[1.1] mb-8">
+              Trusted by <em className="font-normal">designers</em>
+            </h2>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.25 }}
+                className="flex items-center gap-4 mb-8"
               >
                 <img
                   src={t.image}
                   alt={t.name}
-                  className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover mb-6"
+                  className="w-14 h-14 rounded-full object-cover"
                 />
-                <p className="font-serif text-xl text-warm-900 mb-1">
-                  {t.name}
-                </p>
-                <p className="text-warm-500 text-sm">{t.title}</p>
-                <p className="text-warm-400 text-xs mt-0.5">{t.location}</p>
+                <div>
+                  <p className="text-warm-900 text-[14px] font-medium">
+                    {t.name}
+                  </p>
+                  <p className="text-warm-500 text-[13px]">{t.title}</p>
+                  <p className="text-warm-400 text-[12px]">{t.location}</p>
+                </div>
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex items-center gap-3 mt-8">
+            {/* Nav */}
+            <div className="flex items-center gap-3">
               <button
                 onClick={prev}
-                className="w-10 h-10 border border-warm-300 flex items-center justify-center text-warm-500 hover:bg-warm-900 hover:text-white hover:border-warm-900 transition-all cursor-pointer bg-transparent"
+                className="w-10 h-10 border border-border flex items-center justify-center text-warm-600 hover:bg-warm-900 hover:text-white hover:border-warm-900 transition-all cursor-pointer bg-transparent"
               >
                 <ArrowLeft size={16} />
               </button>
               <button
                 onClick={next}
-                className="w-10 h-10 border border-warm-300 flex items-center justify-center text-warm-500 hover:bg-warm-900 hover:text-white hover:border-warm-900 transition-all cursor-pointer bg-transparent"
+                className="w-10 h-10 border border-border flex items-center justify-center text-warm-600 hover:bg-warm-900 hover:text-white hover:border-warm-900 transition-all cursor-pointer bg-transparent"
               >
                 <ArrowRight size={16} />
               </button>
-              <span className="text-warm-400 text-xs ml-2">
+              <span className="text-warm-400 text-[13px] ml-2">
                 {active + 1} / {testimonials.length}
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right — quote */}
-          <div className="md:col-span-7 md:col-start-6">
+          <div className="md:col-span-7 md:col-start-6 flex items-center">
             <AnimatePresence mode="wait">
-              <motion.div
+              <motion.blockquote
                 key={active}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+                className="font-serif text-[26px] md:text-[34px] font-normal text-warm-800 leading-[1.35] italic"
               >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-8 h-px bg-warm-400" />
-                  <span className="text-warm-400 text-[11px] tracking-[0.35em] uppercase">
-                    Trade Partner
-                  </span>
-                </div>
-                <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl font-light text-warm-900 leading-snug">
-                  "{t.quote}"
-                </blockquote>
-              </motion.div>
+                "{t.quote}"
+              </motion.blockquote>
             </AnimatePresence>
           </div>
         </div>

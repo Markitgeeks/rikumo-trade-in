@@ -1,178 +1,124 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+
+const paths = [
+  {
+    label: "Retail",
+    title: "Shop Rikumo",
+    description:
+      "Browse our curated collection of Japanese-inspired home goods, ceramics, textiles, and everyday objects.",
+    cta: "Continue Shopping",
+    href: "https://rikumo.com/collections/yuka-picks",
+    external: true,
+    image:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop&q=80",
+  },
+  {
+    label: "Designer Trade",
+    title: "Designer Trade Program",
+    description:
+      "Interior designers and studios receive 15% off eligible products after approval. Dedicated support for your projects.",
+    cta: "Apply Now",
+    href: "#apply",
+    featured: true,
+    image:
+      "https://images.unsplash.com/photo-1618220179428-22790b461013?w=500&h=400&fit=crop&q=80",
+  },
+  {
+    label: "Wholesale",
+    title: "Morihata Wholesale",
+    description:
+      "Volume pricing, NET terms, and dedicated account management for retailers and retail partners.",
+    cta: "Visit Morihata",
+    href: "https://morihata.com",
+    external: true,
+    image:
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=400&fit=crop&q=80",
+  },
+];
 
 export default function ThreePaths({ onApplyClick }) {
   return (
-    <section id="programs" className="py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        {/* Section header */}
+    <section id="programs" className="border-b border-border">
+      <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-px bg-warm-400" />
-            <span className="text-warm-400 text-[11px] tracking-[0.35em] uppercase">
+          <div>
+            <p className="text-warm-500 text-[13px] tracking-wide mb-3">
               Choose Your Path
-            </span>
-          </div>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-warm-900 leading-tight">
-              Three ways
-              <br />
-              to work with us
-            </h2>
-            <p className="text-warm-500 text-sm leading-relaxed max-w-sm">
-              Whether you're furnishing your home, specifying for clients, or
-              stocking your shelves — there's a path for you.
             </p>
+            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-warm-900 leading-[1.1]">
+              Three ways to
+              <br />
+              work with us
+            </h2>
           </div>
+          <p className="text-warm-600 text-[15px] leading-[1.6] max-w-sm">
+            Whether you're furnishing your home, specifying for clients, or
+            stocking your shelves.
+          </p>
         </motion.div>
 
-        {/* Cards — asymmetric layout */}
-        <div className="grid md:grid-cols-12 gap-4 lg:gap-5">
-          {/* Retail — Compact */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-4 group"
-          >
-            <div className="relative h-full bg-white overflow-hidden">
-              <div className="aspect-[3/4] overflow-hidden">
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-px bg-border">
+          {paths.map((path, i) => (
+            <motion.div
+              key={path.label}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-cream group"
+            >
+              {/* Image */}
+              <div className="aspect-[5/3] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=800&fit=crop&q=80"
-                  alt="Rikumo retail collection"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  src={path.image}
+                  alt={path.title}
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 />
               </div>
-              <div className="p-6 lg:p-8">
-                <p className="text-[11px] tracking-[0.25em] uppercase text-warm-400 mb-3">
-                  Retail
-                </p>
-                <h3 className="font-serif text-2xl text-warm-900 mb-3">
-                  Shop Rikumo
-                </h3>
-                <p className="text-warm-500 text-sm leading-relaxed mb-6">
-                  Full retail collection of Japanese-inspired home goods,
-                  ceramics, and textiles.
-                </p>
-                <a
-                  href="https://rikumo.com/collections/yuka-picks"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[13px] tracking-[0.05em] text-warm-900 no-underline font-medium group/link"
-                >
-                  Continue Shopping
-                  <ArrowUpRight
-                    size={14}
-                    className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"
-                  />
-                </a>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Designer Trade — Featured, larger */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="md:col-span-5 group"
-          >
-            <div className="relative h-full bg-warm-900 text-white overflow-hidden">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&h=600&fit=crop&q=80"
-                  alt="Interior design project"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60"
-                />
-              </div>
-              <div className="p-6 lg:p-8">
-                <div className="inline-block bg-sage-500 text-white text-[10px] tracking-[0.2em] uppercase px-3 py-1 mb-4">
-                  Recommended for Designers
-                </div>
-                <h3 className="font-serif text-3xl text-white mb-3">
-                  Designer Trade Program
-                </h3>
-                <p className="text-warm-300 text-sm leading-relaxed mb-3">
-                  Interior designers, architects, and studios receive 15% off
-                  eligible products. Dedicated support for your projects.
+              {/* Content */}
+              <div className="p-6 md:p-8">
+                <p className="text-warm-400 text-[12px] tracking-wide uppercase mb-2">
+                  {path.label}
                 </p>
-                <ul className="text-warm-400 text-xs space-y-1.5 mb-6">
-                  <li className="flex items-center gap-2">
-                    <span className="w-1 h-1 bg-sage-400 rounded-full" />
-                    15% off eligible products
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1 h-1 bg-sage-400 rounded-full" />
-                    Dedicated trade support
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="w-1 h-1 bg-sage-400 rounded-full" />
-                    Free shipping on orders $250+
-                  </li>
-                </ul>
-                <button
-                  onClick={onApplyClick}
-                  className="group/btn inline-flex items-center gap-2 px-6 py-3 bg-white text-warm-900 text-[13px] tracking-[0.08em] font-medium hover:bg-sage-500 hover:text-white transition-all duration-300 cursor-pointer border-0"
-                >
-                  Apply Now
-                  <ArrowRight
-                    size={14}
-                    className="group-hover/btn:translate-x-1 transition-transform"
-                  />
-                </button>
-              </div>
-            </div>
-          </motion.div>
+                <h3 className="font-serif text-[24px] font-bold text-warm-900 mb-3">
+                  {path.title}
+                </h3>
+                <p className="text-warm-600 text-[14px] leading-[1.6] mb-6">
+                  {path.description}
+                </p>
 
-          {/* Wholesale — Compact */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-3 group"
-          >
-            <div className="relative h-full bg-warm-100 overflow-hidden">
-              <div className="aspect-[3/4] overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=800&fit=crop&q=80"
-                  alt="Wholesale products"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                {path.label === "Designer Trade" ? (
+                  <button
+                    onClick={onApplyClick}
+                    className="inline-flex items-center gap-1.5 text-[14px] text-warm-900 font-medium cursor-pointer bg-transparent border-0 p-0 underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors"
+                  >
+                    {path.cta}
+                    <ArrowUpRight size={14} />
+                  </button>
+                ) : (
+                  <a
+                    href={path.href}
+                    target={path.external ? "_blank" : undefined}
+                    rel={path.external ? "noopener noreferrer" : undefined}
+                    className="inline-flex items-center gap-1.5 text-[14px] text-warm-900 font-medium underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors no-underline"
+                    style={{ textDecoration: "underline" }}
+                  >
+                    {path.cta}
+                    <ArrowUpRight size={14} />
+                  </a>
+                )}
               </div>
-              <div className="p-6 lg:p-8">
-                <p className="text-[11px] tracking-[0.25em] uppercase text-warm-400 mb-3">
-                  Wholesale
-                </p>
-                <h3 className="font-serif text-2xl text-warm-900 mb-3">
-                  Morihata B2B
-                </h3>
-                <p className="text-warm-500 text-sm leading-relaxed mb-6">
-                  Volume pricing, NET terms, and dedicated account management
-                  for retailers.
-                </p>
-                <a
-                  href="https://morihata.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[13px] tracking-[0.05em] text-warm-900 no-underline font-medium group/link"
-                >
-                  Visit Morihata
-                  <ArrowUpRight
-                    size={14}
-                    className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform"
-                  />
-                </a>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

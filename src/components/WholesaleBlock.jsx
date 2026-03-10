@@ -3,62 +3,52 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function WholesaleBlock() {
   return (
-    <section className="py-24 md:py-32 border-t border-warm-200">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid md:grid-cols-12 gap-10 items-center">
+    <section className="border-b border-border">
+      <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-5"
           >
-            <div className="aspect-[4/5] overflow-hidden">
+            <div className="aspect-[4/3] overflow-hidden bg-cream-dark">
               <img
-                src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&h=750&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=700&h=525&fit=crop&q=80"
                 alt="Wholesale"
                 className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
 
+          {/* Text */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="md:col-span-6 md:col-start-7"
+            transition={{ delay: 0.1 }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-px bg-warm-400" />
-              <span className="text-warm-400 text-[11px] tracking-[0.35em] uppercase">
-                Wholesale
-              </span>
-            </div>
-
-            <h2 className="font-serif text-3xl md:text-4xl font-light text-warm-900 mb-4 leading-tight">
+            <p className="text-warm-500 text-[13px] tracking-wide mb-3">
+              Wholesale
+            </p>
+            <h2 className="font-serif text-[36px] font-bold text-warm-900 leading-[1.1] mb-4">
               Looking for volume
               <br />
-              pricing?
+              <em className="font-normal">pricing?</em>
             </h2>
-
-            <p className="text-warm-500 text-sm leading-relaxed mb-8 max-w-md">
+            <p className="text-warm-600 text-[15px] leading-[1.6] mb-6 max-w-md">
               For wholesale purchasing and retail partner accounts, our sister
-              brand <strong className="text-warm-800">Morihata</strong> handles
-              all B2B relationships with dedicated account management, NET terms,
-              and full product catalog access.
+              brand Morihata handles all B2B relationships with dedicated
+              account management, NET terms, and full catalog access.
             </p>
-
             <a
               href="https://morihata.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-[13px] tracking-[0.08em] text-warm-900 font-medium no-underline pb-1 border-b border-warm-900 hover:border-sage-500 hover:text-sage-600 transition-colors"
+              className="inline-flex items-center gap-1.5 text-[14px] text-warm-900 font-medium underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors"
             >
               Visit Morihata.com
-              <ArrowUpRight
-                size={14}
-                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-              />
+              <ArrowUpRight size={14} />
             </a>
           </motion.div>
         </div>

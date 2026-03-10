@@ -1,12 +1,14 @@
 export default function Footer() {
   return (
-    <footer className="bg-warm-900 text-white py-16 md:py-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid md:grid-cols-12 gap-10 md:gap-8 mb-16">
+    <footer className="bg-cream">
+      <div className="max-w-[1300px] mx-auto px-8 py-14 md:py-16">
+        <div className="grid md:grid-cols-12 gap-10 mb-14">
           {/* Brand */}
           <div className="md:col-span-4">
-            <span className="font-serif text-2xl tracking-[0.15em]">RIKUMO</span>
-            <p className="text-warm-500 text-sm mt-3 leading-relaxed max-w-xs">
+            <span className="font-serif text-[20px] font-bold text-warm-900 tracking-wide">
+              Rikumo
+            </span>
+            <p className="text-warm-500 text-[14px] mt-3 leading-[1.6] max-w-xs">
               Japanese-inspired goods for everyday living. Thoughtfully curated
               from artisans across Japan.
             </p>
@@ -14,17 +16,17 @@ export default function Footer() {
 
           {/* Links */}
           <div className="md:col-span-2 md:col-start-6">
-            <p className="text-[11px] tracking-[0.2em] uppercase text-warm-500 mb-4">
+            <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-4">
               Shop
             </p>
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               {["New Arrivals", "Bath", "Kitchen", "Fragrance"].map((l) => (
                 <a
                   key={l}
                   href="https://rikumo.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-warm-400 text-sm hover:text-white transition-colors no-underline"
+                  className="block text-warm-600 text-[14px] hover:text-warm-900 transition-colors no-underline"
                 >
                   {l}
                 </a>
@@ -33,18 +35,21 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <p className="text-[11px] tracking-[0.2em] uppercase text-warm-500 mb-4">
+            <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-4">
               Programs
             </p>
-            <div className="space-y-2.5">
-              <a href="#programs" className="block text-warm-400 text-sm hover:text-white transition-colors no-underline">
+            <div className="space-y-2">
+              <a
+                href="#programs"
+                className="block text-warm-600 text-[14px] hover:text-warm-900 transition-colors no-underline"
+              >
                 Designer Trade
               </a>
               <a
                 href="https://morihata.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-warm-400 text-sm hover:text-white transition-colors no-underline"
+                className="block text-warm-600 text-[14px] hover:text-warm-900 transition-colors no-underline"
               >
                 Wholesale
               </a>
@@ -52,21 +57,21 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <p className="text-[11px] tracking-[0.2em] uppercase text-warm-500 mb-4">
+            <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-4">
               Contact
             </p>
-            <div className="space-y-2.5 text-warm-400 text-sm">
+            <div className="space-y-2 text-warm-600 text-[14px]">
               <p>info@morihata.com</p>
               <p>Philadelphia, PA</p>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-warm-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-warm-600 text-xs">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-warm-400 text-[12px]">
             &copy; {new Date().getFullYear()} Rikumo. All rights reserved.
           </p>
-          <p className="text-warm-700 text-[10px] tracking-wide">
+          <p className="text-warm-400 text-[11px]">
             UX concept demo for stakeholder review
           </p>
         </div>

@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
 import { FileText, Search, CheckCircle, Sparkles } from "lucide-react";
 
 const steps = [
@@ -17,7 +17,7 @@ const steps = [
     num: "02",
     title: "Review",
     description:
-      "Our team reviews your credentials and verifies your design practice. Typically 2-3 business days.",
+      "Our team reviews your credentials and verifies your design practice. Typically 2–3 business days.",
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=500&fit=crop&q=80",
   },
@@ -50,16 +50,12 @@ export default function ProcessFlow() {
     offset: ["start end", "end start"],
   });
 
-  // Map scroll progress to active step
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    // Activate steps as user scrolls through the section
-    // 0.2 = entering view, 0.8 = leaving view
     const progress = Math.max(0, Math.min(1, (v - 0.15) / 0.55));
     const stepIndex = Math.min(3, Math.floor(progress * 4));
     setActiveStep(stepIndex);
   });
 
-  // Progress bar height
   const progressHeight = useTransform(
     scrollYProgress,
     [0.15, 0.7],
@@ -70,37 +66,33 @@ export default function ProcessFlow() {
     <section
       id="process"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-warm-900 text-white overflow-hidden"
+      className="border-b border-border"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid md:grid-cols-12 gap-16 md:gap-10">
-          {/* Left — sticky heading + image */}
-          <div className="md:col-span-5 md:sticky md:top-28 md:self-start">
+      <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
+        <div className="grid md:grid-cols-2 gap-16">
+          {/* Left — sticky */}
+          <div className="md:sticky md:top-[90px] md:self-start">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-warm-600" />
-                <span className="text-warm-500 text-[11px] tracking-[0.35em] uppercase">
-                  How It Works
-                </span>
-              </div>
-              <h2 className="font-serif text-4xl md:text-5xl font-light leading-tight mb-4">
+              <p className="text-warm-500 text-[13px] tracking-wide mb-3">
+                How It Works
+              </p>
+              <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-warm-900 leading-[1.1] mb-4">
                 From application
                 <br />
-                to{" "}
-                <em className="not-italic text-sage-400">trade pricing</em>
+                to <em className="font-normal">trade pricing</em>
               </h2>
-              <p className="text-warm-400 text-sm leading-relaxed mb-8">
+              <p className="text-warm-600 text-[15px] leading-[1.6] mb-10 max-w-sm">
                 A straightforward process designed to get you access to designer
                 pricing as quickly as possible.
               </p>
             </motion.div>
 
-            {/* Dynamic image that changes with active step */}
-            <div className="relative aspect-[5/4] overflow-hidden rounded-sm hidden md:block">
+            {/* Dynamic image */}
+            <div className="relative aspect-[4/3] overflow-hidden hidden md:block bg-cream-dark">
               {steps.map((step, i) => (
                 <motion.img
                   key={step.num}
@@ -110,29 +102,28 @@ export default function ProcessFlow() {
                   initial={false}
                   animate={{
                     opacity: activeStep === i ? 1 : 0,
-                    scale: activeStep === i ? 1 : 1.05,
+                    scale: activeStep === i ? 1 : 1.04,
                   }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  transition={{ duration: 0.5 }}
                 />
               ))}
-              {/* Step counter overlay */}
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 text-warm-900 text-[11px] tracking-wide font-medium rounded-sm">
+              <div className="absolute bottom-0 left-0 bg-cream px-4 py-2 text-[12px] text-warm-600 border-t border-r border-border">
                 Step {steps[activeStep].num} of 04
               </div>
             </div>
           </div>
 
-          {/* Right — steps with scroll-driven progress */}
-          <div className="md:col-span-6 md:col-start-7 relative">
-            {/* Vertical progress line */}
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-warm-800 hidden md:block">
+          {/* Right — steps */}
+          <div className="relative">
+            {/* Progress track */}
+            <div className="absolute left-[23px] top-0 bottom-0 w-px bg-warm-200 hidden md:block">
               <motion.div
-                className="w-full bg-sage-400 origin-top"
+                className="w-full bg-sage-500 origin-top"
                 style={{ height: progressHeight }}
               />
             </div>
 
-            <div className="space-y-0">
+            <div>
               {steps.map((step, i) => {
                 const Icon = step.icon;
                 const isActive = i <= activeStep;
@@ -141,67 +132,57 @@ export default function ProcessFlow() {
                 return (
                   <motion.div
                     key={step.num}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="flex gap-6 py-10 md:py-12"
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    className="flex gap-6 py-8 md:py-10"
                   >
-                    {/* Step circle */}
-                    <div className="flex-shrink-0 relative z-10">
-                      <motion.div
-                        animate={{
-                          backgroundColor: isCurrent
-                            ? "rgb(90, 115, 80)"
-                            : isActive
-                            ? "rgba(90, 115, 80, 0.2)"
-                            : "transparent",
-                          borderColor: isCurrent
-                            ? "rgb(90, 115, 80)"
-                            : isActive
-                            ? "rgb(90, 115, 80)"
-                            : "rgb(62, 57, 52)",
-                          scale: isCurrent ? 1.1 : 1,
-                        }}
-                        transition={{ duration: 0.4 }}
-                        className="w-12 h-12 rounded-full border-2 flex items-center justify-center"
-                      >
-                        <Icon
-                          size={18}
-                          className={
-                            isCurrent
-                              ? "text-white"
-                              : isActive
-                              ? "text-sage-400"
-                              : "text-warm-600"
-                          }
-                        />
-                      </motion.div>
-                    </div>
-
-                    {/* Step content */}
+                    {/* Circle */}
                     <motion.div
                       animate={{
-                        opacity: isActive ? 1 : 0.4,
-                        y: isCurrent ? 0 : 4,
+                        backgroundColor: isCurrent
+                          ? "#5a7350"
+                          : isActive
+                          ? "#e6ebe4"
+                          : "#f5f3ef",
+                        borderColor: isCurrent
+                          ? "#5a7350"
+                          : isActive
+                          ? "#a3b49d"
+                          : "#e8e4dd",
                       }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.35 }}
+                      className="flex-shrink-0 w-[48px] h-[48px] rounded-full border flex items-center justify-center relative z-10"
                     >
-                      <span
-                        className={`text-[11px] tracking-[0.2em] uppercase font-medium transition-colors duration-400 ${
-                          isCurrent ? "text-sage-400" : "text-warm-600"
-                        }`}
-                      >
+                      <Icon
+                        size={18}
+                        className={
+                          isCurrent
+                            ? "text-white"
+                            : isActive
+                            ? "text-sage-600"
+                            : "text-warm-400"
+                        }
+                      />
+                    </motion.div>
+
+                    {/* Text */}
+                    <motion.div
+                      animate={{ opacity: isActive ? 1 : 0.4 }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      <p className="text-[12px] text-warm-400 tracking-wide uppercase mb-1">
                         Step {step.num}
-                      </span>
+                      </p>
                       <h3
-                        className={`font-serif text-2xl mt-1 mb-3 transition-colors duration-400 ${
-                          isCurrent ? "text-white" : "text-warm-500"
+                        className={`font-serif text-[22px] font-bold mb-2 transition-colors duration-300 ${
+                          isCurrent ? "text-warm-900" : "text-warm-600"
                         }`}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-warm-400 text-sm leading-relaxed max-w-md">
+                      <p className="text-warm-600 text-[14px] leading-[1.6] max-w-sm">
                         {step.description}
                       </p>
                     </motion.div>

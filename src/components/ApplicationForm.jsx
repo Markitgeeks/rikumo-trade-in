@@ -37,10 +37,10 @@ const PURCHASE_FREQUENCIES = [
 ];
 
 const inputClass =
-  "w-full px-4 py-3 bg-warm-50 border border-warm-200 text-sm text-warm-900 placeholder:text-warm-400 focus:outline-none focus:border-sage-400 focus:bg-white focus:ring-2 focus:ring-sage-100 transition-all rounded-sm";
+  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-warm-900 placeholder:text-warm-400 focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all";
 
 const selectClass =
-  "w-full px-4 py-3 bg-warm-50 border border-warm-200 text-sm text-warm-900 focus:outline-none focus:border-sage-400 focus:bg-white focus:ring-2 focus:ring-sage-100 transition-all rounded-sm cursor-pointer appearance-none";
+  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-warm-900 focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all cursor-pointer appearance-none";
 
 export default function ApplicationForm({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -64,23 +64,23 @@ export default function ApplicationForm({ isOpen, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-warm-900/60 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-[100] bg-warm-900/40 backdrop-blur-sm overflow-y-auto"
           onClick={(e) => e.target === e.currentTarget && handleClose()}
         >
           <div className="min-h-full flex items-start justify-center py-8 px-4 md:py-12">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 40 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative bg-white w-full max-w-xl shadow-2xl rounded-sm"
+              exit={{ opacity: 0, y: 30 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-white w-full max-w-lg border border-border"
             >
               {/* Close */}
               <button
                 onClick={handleClose}
-                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-warm-400 hover:text-warm-900 transition-colors cursor-pointer bg-warm-50 hover:bg-warm-100 border-0 rounded-full z-20"
+                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-warm-400 hover:text-warm-900 transition-colors cursor-pointer bg-transparent border border-border hover:border-warm-400 z-20"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
 
               <AnimatePresence mode="wait">
@@ -91,242 +91,158 @@ export default function ApplicationForm({ isOpen, onClose }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    {/* Header with value prop */}
-                    <div className="px-7 md:px-10 pt-10 pb-7">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-8 h-px bg-sage-400" />
-                        <span className="text-sage-500 text-[11px] tracking-[0.3em] uppercase font-medium">
-                          Trade Program
-                        </span>
-                      </div>
-                      <h3 className="font-serif text-3xl md:text-[2rem] font-light text-warm-900 mb-3">
+                    {/* Header */}
+                    <div className="px-8 pt-10 pb-6">
+                      <p className="text-warm-500 text-[13px] tracking-wide mb-2">
+                        Trade Program
+                      </p>
+                      <h3 className="font-serif text-[28px] font-bold text-warm-900 mb-2">
                         Apply for Designer Trade
                       </h3>
-                      <p className="text-warm-500 text-sm leading-relaxed max-w-sm">
-                        Fill out the form below. We'll review your application
-                        and get back to you within 2-3 business days.
+                      <p className="text-warm-500 text-[14px] leading-[1.6]">
+                        We'll review your application within 2–3 business days.
                       </p>
 
                       {/* Benefit pills */}
                       <div className="flex flex-wrap gap-2 mt-5">
                         {[
                           { icon: Percent, text: "15% off eligible items" },
-                          { icon: Clock, text: "2-3 day review" },
+                          { icon: Clock, text: "2–3 day review" },
                           { icon: Headphones, text: "Dedicated support" },
                           { icon: Truck, text: "Free shipping $250+" },
                         ].map(({ icon: Icon, text }) => (
-                          <div
+                          <span
                             key={text}
-                            className="flex items-center gap-1.5 bg-sage-50 text-sage-700 text-[11px] px-3 py-1.5 rounded-full"
+                            className="inline-flex items-center gap-1.5 bg-cream text-warm-600 text-[11px] px-3 py-1.5 border border-border"
                           >
-                            <Icon size={11} />
+                            <Icon size={11} className="text-sage-500" />
                             {text}
-                          </div>
+                          </span>
                         ))}
                       </div>
                     </div>
 
-                    <div className="w-full h-px bg-warm-100" />
+                    <div className="h-px bg-border" />
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="px-7 md:px-10 py-8">
-                      <div className="space-y-8">
-                        {/* Section: About You */}
+                    <form onSubmit={handleSubmit} className="px-8 py-7">
+                      <div className="space-y-7">
+                        {/* About You */}
                         <div>
-                          <p className="text-[11px] tracking-[0.2em] uppercase text-warm-400 font-medium mb-4">
+                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
                             About You
                           </p>
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-2 gap-3">
-                              <input
-                                type="text"
-                                required
-                                placeholder="First Name *"
-                                className={inputClass}
-                              />
-                              <input
-                                type="text"
-                                required
-                                placeholder="Last Name *"
-                                className={inputClass}
-                              />
+                          <div className="space-y-2.5">
+                            <div className="grid grid-cols-2 gap-2.5">
+                              <input type="text" required placeholder="First Name *" className={inputClass} />
+                              <input type="text" required placeholder="Last Name *" className={inputClass} />
                             </div>
-                            <input
-                              type="email"
-                              required
-                              placeholder="Email Address *"
-                              className={inputClass}
-                            />
-                            <input
-                              type="tel"
-                              placeholder="Phone (optional)"
-                              className={inputClass}
-                            />
+                            <input type="email" required placeholder="Email Address *" className={inputClass} />
+                            <input type="tel" placeholder="Phone (optional)" className={inputClass} />
                           </div>
                         </div>
 
-                        {/* Section: Your Business */}
+                        {/* Business */}
                         <div>
-                          <p className="text-[11px] tracking-[0.2em] uppercase text-warm-400 font-medium mb-4">
+                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
                             Your Business
                           </p>
-                          <div className="space-y-3">
-                            <input
-                              type="text"
-                              required
-                              placeholder="Company / Studio Name *"
-                              className={inputClass}
-                            />
-                            <div className="grid grid-cols-2 gap-3">
-                              <input
-                                type="url"
-                                placeholder="Website or Portfolio URL"
-                                className={inputClass}
-                              />
-                              <input
-                                type="text"
-                                placeholder="Instagram (optional)"
-                                className={inputClass}
-                              />
+                          <div className="space-y-2.5">
+                            <input type="text" required placeholder="Company / Studio Name *" className={inputClass} />
+                            <div className="grid grid-cols-2 gap-2.5">
+                              <input type="url" placeholder="Website or Portfolio" className={inputClass} />
+                              <input type="text" placeholder="Instagram" className={inputClass} />
                             </div>
-                            <div className="grid grid-cols-2 gap-3">
+                            <div className="grid grid-cols-2 gap-2.5">
                               <select required className={selectClass}>
                                 <option value="">Business Type *</option>
                                 {BUSINESS_TYPES.map((t) => (
-                                  <option key={t} value={t}>
-                                    {t}
-                                  </option>
+                                  <option key={t} value={t}>{t}</option>
                                 ))}
                               </select>
                               <select className={selectClass}>
                                 <option value="">Project Type</option>
                                 {PROJECT_TYPES.map((t) => (
-                                  <option key={t} value={t}>
-                                    {t}
-                                  </option>
+                                  <option key={t} value={t}>{t}</option>
                                 ))}
                               </select>
                             </div>
                           </div>
                         </div>
 
-                        {/* Section: Location */}
+                        {/* Location */}
                         <div>
-                          <p className="text-[11px] tracking-[0.2em] uppercase text-warm-400 font-medium mb-4">
+                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
                             Location
                           </p>
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-5 gap-3">
-                              <input
-                                type="text"
-                                required
-                                placeholder="City *"
-                                className={`${inputClass} col-span-2`}
-                              />
-                              <input
-                                type="text"
-                                required
-                                placeholder="State *"
-                                className={inputClass}
-                              />
-                              <input
-                                type="text"
-                                required
-                                placeholder="Zip *"
-                                className={inputClass}
-                              />
-                              <input
-                                type="text"
-                                required
-                                placeholder="Country *"
-                                className={inputClass}
-                              />
-                            </div>
+                          <div className="grid grid-cols-5 gap-2.5">
+                            <input type="text" required placeholder="City *" className={`${inputClass} col-span-2`} />
+                            <input type="text" required placeholder="State *" className={inputClass} />
+                            <input type="text" required placeholder="Zip *" className={inputClass} />
+                            <input type="text" required placeholder="Country *" className={inputClass} />
                           </div>
                         </div>
 
-                        {/* Section: Additional (collapsed feel) */}
+                        {/* Additional */}
                         <div>
-                          <p className="text-[11px] tracking-[0.2em] uppercase text-warm-400 font-medium mb-4">
-                            Additional Details
+                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
+                            Additional
                           </p>
-                          <div className="space-y-3">
-                            <div className="grid grid-cols-2 gap-3">
-                              <input
-                                type="text"
-                                placeholder="Resale Certificate / Tax ID"
-                                className={inputClass}
-                              />
+                          <div className="space-y-2.5">
+                            <div className="grid grid-cols-2 gap-2.5">
+                              <input type="text" placeholder="Resale Certificate / Tax ID" className={inputClass} />
                               <select className={selectClass}>
                                 <option value="">Purchase Frequency</option>
                                 {PURCHASE_FREQUENCIES.map((f) => (
-                                  <option key={f} value={f}>
-                                    {f}
-                                  </option>
+                                  <option key={f} value={f}>{f}</option>
                                 ))}
                               </select>
                             </div>
                             <textarea
                               rows={2}
-                              placeholder="Anything else you'd like us to know? (optional)"
+                              placeholder="Anything else? (optional)"
                               className={`${inputClass} resize-none`}
                             />
                           </div>
                         </div>
 
                         {/* Terms */}
-                        <div className="pt-2">
-                          <label className="flex items-start gap-3 cursor-pointer group">
-                            <div className="mt-0.5 flex-shrink-0">
-                              <div
-                                className={`w-5 h-5 rounded-sm border-2 flex items-center justify-center transition-all ${
-                                  agreed
-                                    ? "bg-sage-500 border-sage-500"
-                                    : "border-warm-300 group-hover:border-warm-400"
-                                }`}
-                              >
-                                {agreed && (
-                                  <motion.svg
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    width="12"
-                                    height="12"
-                                    viewBox="0 0 12 12"
-                                    fill="none"
-                                  >
-                                    <path
-                                      d="M2.5 6L5 8.5L9.5 3.5"
-                                      stroke="white"
-                                      strokeWidth="2"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                    />
-                                  </motion.svg>
-                                )}
-                              </div>
-                              <input
-                                type="checkbox"
-                                checked={agreed}
-                                onChange={(e) => setAgreed(e.target.checked)}
-                                className="sr-only"
-                              />
+                        <label className="flex items-start gap-3 cursor-pointer">
+                          <div className="mt-0.5 flex-shrink-0">
+                            <div
+                              className={`w-[18px] h-[18px] border flex items-center justify-center transition-all ${
+                                agreed
+                                  ? "bg-sage-600 border-sage-600"
+                                  : "border-warm-300 hover:border-warm-400"
+                              }`}
+                            >
+                              {agreed && (
+                                <motion.svg initial={{ scale: 0 }} animate={{ scale: 1 }} width="10" height="10" viewBox="0 0 12 12" fill="none">
+                                  <path d="M2.5 6L5 8.5L9.5 3.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </motion.svg>
+                              )}
                             </div>
-                            <span className="text-[12px] text-warm-500 leading-relaxed">
-                              I agree to Rikumo's Trade Program Terms. I
-                              understand that submission does not guarantee
-                              approval, and trade pricing applies only to
-                              eligible products.
-                            </span>
-                          </label>
-                        </div>
+                            <input
+                              type="checkbox"
+                              checked={agreed}
+                              onChange={(e) => setAgreed(e.target.checked)}
+                              className="sr-only"
+                            />
+                          </div>
+                          <span className="text-[12px] text-warm-500 leading-relaxed">
+                            I agree to Rikumo's Trade Program Terms. Submission
+                            does not guarantee approval. Trade pricing applies to
+                            eligible products only.
+                          </span>
+                        </label>
 
                         {/* Submit */}
                         <button
                           type="submit"
                           disabled={!agreed}
-                          className={`w-full py-4 text-[13px] tracking-[0.1em] uppercase font-medium flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer border-0 rounded-sm ${
+                          className={`w-full py-3.5 text-[14px] font-medium flex items-center justify-center gap-2 transition-all cursor-pointer border-0 ${
                             agreed
-                              ? "bg-warm-900 text-white hover:bg-sage-600"
+                              ? "bg-warm-900 text-white hover:bg-warm-800"
                               : "bg-warm-100 text-warm-400 cursor-not-allowed"
                           }`}
                         >
@@ -337,75 +253,49 @@ export default function ApplicationForm({ isOpen, onClose }) {
                     </form>
                   </motion.div>
                 ) : (
-                  /* Success state */
                   <motion.div
                     key="success"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.4 }}
-                    className="px-7 md:px-10 py-20 text-center"
+                    className="px-8 py-20 text-center"
                   >
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        delay: 0.15,
-                      }}
-                      className="w-16 h-16 bg-sage-100 rounded-full flex items-center justify-center mx-auto mb-8"
+                      transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
+                      className="w-14 h-14 bg-sage-50 border border-sage-200 rounded-full flex items-center justify-center mx-auto mb-6"
                     >
-                      <CheckCircle2 size={30} className="text-sage-500" />
+                      <CheckCircle2 size={28} className="text-sage-600" />
                     </motion.div>
 
-                    <h3 className="font-serif text-2xl md:text-3xl font-light text-warm-900 mb-3">
+                    <h3 className="font-serif text-[26px] font-bold text-warm-900 mb-2">
                       Application Received
                     </h3>
-
-                    <p className="text-warm-500 text-sm leading-relaxed max-w-sm mx-auto mb-8">
+                    <p className="text-warm-500 text-[14px] leading-[1.6] max-w-sm mx-auto mb-8">
                       We've sent your application to{" "}
-                      <strong className="text-warm-700">
-                        info@morihata.com
-                      </strong>
-                      . You'll hear back within 2-3 business days.
+                      <strong className="text-warm-700">info@morihata.com</strong>.
+                      You'll hear back within 2–3 business days.
                     </p>
 
-                    {/* Timeline */}
-                    <div className="max-w-xs mx-auto text-left space-y-5 mb-10">
+                    <div className="max-w-xs mx-auto text-left space-y-4 mb-10">
                       {[
-                        {
-                          num: "1",
-                          title: "Application Review",
-                          desc: "Our team verifies your credentials",
-                        },
-                        {
-                          num: "2",
-                          title: "Account Activation",
-                          desc: "Your account is tagged for trade pricing",
-                        },
-                        {
-                          num: "3",
-                          title: "Start Saving",
-                          desc: "Log in to see 15% off eligible products",
-                        },
+                        { n: "1", t: "Application Review", d: "We verify your credentials" },
+                        { n: "2", t: "Account Activation", d: "Your account is tagged for trade pricing" },
+                        { n: "3", t: "Start Saving", d: "Log in to see 15% off eligible products" },
                       ].map((item, i) => (
                         <motion.div
-                          key={item.num}
-                          initial={{ opacity: 0, x: -10 }}
+                          key={item.n}
+                          initial={{ opacity: 0, x: -8 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + i * 0.15 }}
-                          className="flex gap-4"
+                          transition={{ delay: 0.25 + i * 0.12 }}
+                          className="flex gap-3"
                         >
-                          <div className="w-8 h-8 bg-sage-50 rounded-full flex items-center justify-center flex-shrink-0 text-sage-600 text-xs font-medium border border-sage-200">
-                            {item.num}
+                          <div className="w-7 h-7 border border-sage-200 flex items-center justify-center flex-shrink-0 text-sage-600 text-[11px] font-medium bg-sage-50">
+                            {item.n}
                           </div>
                           <div>
-                            <p className="text-warm-900 text-sm font-medium">
-                              {item.title}
-                            </p>
-                            <p className="text-warm-400 text-xs">
-                              {item.desc}
-                            </p>
+                            <p className="text-warm-900 text-[13px] font-medium">{item.t}</p>
+                            <p className="text-warm-400 text-[12px]">{item.d}</p>
                           </div>
                         </motion.div>
                       ))}
@@ -413,7 +303,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
 
                     <button
                       onClick={handleClose}
-                      className="px-8 py-3 bg-warm-900 text-white text-[13px] tracking-[0.08em] hover:bg-warm-800 transition-colors cursor-pointer border-0 rounded-sm"
+                      className="px-7 py-3 bg-warm-900 text-white text-[14px] hover:bg-warm-800 transition-colors cursor-pointer border-0"
                     >
                       Back to Rikumo
                     </button>

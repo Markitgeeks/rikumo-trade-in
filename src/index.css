@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Cormorant Garamond", "Georgia", serif;
-  --font-sans: "Inter", "Helvetica Neue", sans-serif;
+  --font-serif: "Crimson Text", "Georgia", serif;
+  --font-sans: "DM Sans", "Helvetica Neue", sans-serif;
+  --color-cream: #fbf8f6;
+  --color-cream-dark: #f8f6f2;
   --color-warm-50: #faf9f7;
   --color-warm-100: #f5f3ef;
   --color-warm-200: #e8e4dd;
@@ -20,8 +22,7 @@
   --color-sage-400: #7d9474;
   --color-sage-500: #5a7350;
   --color-sage-600: #475c40;
-  --color-accent: #8b7355;
-  --color-accent-light: #a8926f;
+  --color-border: rgba(32, 32, 32, 0.1);
 }
 
 @layer base {
@@ -30,11 +31,13 @@
   }
   body {
     font-family: var(--font-sans);
-    color: var(--color-warm-900);
-    background-color: var(--color-warm-50);
+    color: #28282a;
+    background-color: var(--color-cream);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
   }
   #root {
     min-height: 100vh;
@@ -42,11 +45,5 @@
   ::selection {
     background-color: #c9d4c5;
     color: #1e1b18;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
   }
 }
