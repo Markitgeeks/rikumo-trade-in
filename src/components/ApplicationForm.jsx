@@ -37,10 +37,10 @@ const PURCHASE_FREQUENCIES = [
 ];
 
 const inputClass =
-  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-black placeholder:text-warm-400 focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all";
+  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-warm-700 placeholder:text-warm-400 focus:outline-none focus:border-warm-500 focus:ring-1 focus:ring-warm-200 transition-all rounded-[3px]";
 
 const selectClass =
-  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-black focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all cursor-pointer appearance-none";
+  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-warm-700 focus:outline-none focus:border-warm-500 focus:ring-1 focus:ring-warm-200 transition-all cursor-pointer appearance-none rounded-[3px]";
 
 export default function ApplicationForm({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -64,7 +64,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-[100] bg-warm-700/40 backdrop-blur-sm overflow-y-auto"
           onClick={(e) => e.target === e.currentTarget && handleClose()}
         >
           <div className="min-h-full flex items-start justify-center py-8 px-4 md:py-12">
@@ -73,12 +73,13 @@ export default function ApplicationForm({ isOpen, onClose }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
               transition={{ duration: 0.3 }}
-              className="relative bg-white w-full max-w-lg border border-border"
+              className="relative bg-white w-full max-w-lg rounded-[5px]"
+              style={{ border: "1px solid rgba(32,32,32,0.1)" }}
             >
               {/* Close */}
               <button
                 onClick={handleClose}
-                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-warm-400 hover:text-black transition-colors cursor-pointer bg-transparent border border-border hover:border-warm-400 z-20"
+                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-warm-400 hover:text-warm-700 transition-colors cursor-pointer bg-transparent border border-border hover:border-warm-400 z-20 rounded-full"
               >
                 <X size={14} />
               </button>
@@ -93,10 +94,10 @@ export default function ApplicationForm({ isOpen, onClose }) {
                   >
                     {/* Header */}
                     <div className="px-8 pt-10 pb-6">
-                      <p className="text-warm-500 text-[13px] tracking-wide mb-2">
+                      <p className="text-warm-500 text-[12px] tracking-[0.15em] uppercase mb-2">
                         Trade Program
                       </p>
-                      <h3 className="font-serif text-[28px] font-bold text-black mb-2">
+                      <h3 className="font-serif text-[26px] font-bold text-warm-700 mb-2">
                         Apply for Designer Trade
                       </h3>
                       <p className="text-warm-500 text-[14px] leading-[1.6]">
@@ -113,9 +114,9 @@ export default function ApplicationForm({ isOpen, onClose }) {
                         ].map(({ icon: Icon, text }) => (
                           <span
                             key={text}
-                            className="inline-flex items-center gap-1.5 bg-cream text-warm-600 text-[11px] px-3 py-1.5 border border-border"
+                            className="inline-flex items-center gap-1.5 bg-cream text-warm-500 text-[11px] px-3 py-1.5 border border-border rounded-[3px]"
                           >
-                            <Icon size={11} className="text-sage-500" />
+                            <Icon size={11} className="text-warm-400" />
                             {text}
                           </span>
                         ))}
@@ -129,7 +130,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
                       <div className="space-y-7">
                         {/* About You */}
                         <div>
-                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
+                          <p className="text-[11px] tracking-[0.15em] uppercase text-warm-400 mb-3">
                             About You
                           </p>
                           <div className="space-y-2.5">
@@ -144,7 +145,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
 
                         {/* Business */}
                         <div>
-                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
+                          <p className="text-[11px] tracking-[0.15em] uppercase text-warm-400 mb-3">
                             Your Business
                           </p>
                           <div className="space-y-2.5">
@@ -172,7 +173,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
 
                         {/* Location */}
                         <div>
-                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
+                          <p className="text-[11px] tracking-[0.15em] uppercase text-warm-400 mb-3">
                             Location
                           </p>
                           <div className="grid grid-cols-5 gap-2.5">
@@ -185,7 +186,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
 
                         {/* Additional */}
                         <div>
-                          <p className="text-[12px] tracking-wide uppercase text-warm-400 mb-3">
+                          <p className="text-[11px] tracking-[0.15em] uppercase text-warm-400 mb-3">
                             Additional
                           </p>
                           <div className="space-y-2.5">
@@ -210,9 +211,9 @@ export default function ApplicationForm({ isOpen, onClose }) {
                         <label className="flex items-start gap-3 cursor-pointer">
                           <div className="mt-0.5 flex-shrink-0">
                             <div
-                              className={`w-[18px] h-[18px] border flex items-center justify-center transition-all ${
+                              className={`w-[18px] h-[18px] border flex items-center justify-center transition-all rounded-[3px] ${
                                 agreed
-                                  ? "bg-sage-600 border-sage-600"
+                                  ? "bg-warm-700 border-warm-700"
                                   : "border-warm-300 hover:border-warm-400"
                               }`}
                             >
@@ -240,9 +241,9 @@ export default function ApplicationForm({ isOpen, onClose }) {
                         <button
                           type="submit"
                           disabled={!agreed}
-                          className={`w-full py-3.5 text-[14px] font-medium flex items-center justify-center gap-2 transition-all cursor-pointer border-0 ${
+                          className={`w-full py-3.5 text-[14px] font-medium flex items-center justify-center gap-2 transition-all cursor-pointer border-0 rounded-[5px] ${
                             agreed
-                              ? "bg-black text-white hover:opacity-80"
+                              ? "bg-warm-700 text-white hover:bg-warm-900"
                               : "bg-warm-100 text-warm-400 cursor-not-allowed"
                           }`}
                         >
@@ -263,12 +264,12 @@ export default function ApplicationForm({ isOpen, onClose }) {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
-                      className="w-14 h-14 bg-sage-50 border border-sage-200 rounded-full flex items-center justify-center mx-auto mb-6"
+                      className="w-14 h-14 bg-cream border border-border rounded-full flex items-center justify-center mx-auto mb-6"
                     >
-                      <CheckCircle2 size={28} className="text-sage-600" />
+                      <CheckCircle2 size={28} className="text-warm-700" />
                     </motion.div>
 
-                    <h3 className="font-serif text-[26px] font-bold text-black mb-2">
+                    <h3 className="font-serif text-[26px] font-bold text-warm-700 mb-2">
                       Application Received
                     </h3>
                     <p className="text-warm-500 text-[14px] leading-[1.6] max-w-sm mx-auto mb-8">
@@ -290,11 +291,11 @@ export default function ApplicationForm({ isOpen, onClose }) {
                           transition={{ delay: 0.25 + i * 0.12 }}
                           className="flex gap-3"
                         >
-                          <div className="w-7 h-7 border border-sage-200 flex items-center justify-center flex-shrink-0 text-sage-600 text-[11px] font-medium bg-sage-50">
+                          <div className="w-7 h-7 border border-border flex items-center justify-center flex-shrink-0 text-warm-700 text-[11px] font-medium bg-cream rounded-full">
                             {item.n}
                           </div>
                           <div>
-                            <p className="text-black text-[13px] font-medium">{item.t}</p>
+                            <p className="text-warm-700 text-[13px] font-medium">{item.t}</p>
                             <p className="text-warm-400 text-[12px]">{item.d}</p>
                           </div>
                         </motion.div>
@@ -303,7 +304,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
 
                     <button
                       onClick={handleClose}
-                      className="px-7 py-3 bg-warm-900 text-white text-[14px] hover:bg-warm-800 transition-colors cursor-pointer border-0"
+                      className="px-7 py-3 bg-warm-700 text-white text-[14px] hover:bg-warm-900 transition-colors cursor-pointer border-0 rounded-[5px]"
                     >
                       Back to Rikumo
                     </button>

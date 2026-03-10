@@ -66,7 +66,8 @@ export default function ProcessFlow() {
     <section
       id="process"
       ref={sectionRef}
-      className="border-b border-border bg-white"
+      className="bg-white"
+      style={{ borderTop: "1px solid rgba(32,32,32,0.1)", borderBottom: "1px solid rgba(32,32,32,0.1)" }}
     >
       <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
         <div className="grid md:grid-cols-2 gap-16">
@@ -77,22 +78,22 @@ export default function ProcessFlow() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <p className="text-warm-500 text-[13px] tracking-wide mb-3">
+              <p className="text-warm-500 text-[12px] tracking-[0.15em] uppercase mb-3">
                 How It Works
               </p>
-              <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-black leading-[1.1] mb-4">
+              <h2 className="font-serif text-[32px] md:text-[40px] font-bold text-warm-700 leading-[1.1] mb-4">
                 From application
                 <br />
                 to <em className="font-normal">trade pricing</em>
               </h2>
-              <p className="text-warm-600 text-[15px] leading-[1.6] mb-10 max-w-sm">
+              <p className="text-warm-500 text-[15px] leading-[1.6] mb-10 max-w-sm">
                 A straightforward process designed to get you access to designer
                 pricing as quickly as possible.
               </p>
             </motion.div>
 
             {/* Dynamic image */}
-            <div className="relative aspect-[4/3] overflow-hidden hidden md:block bg-warm-50">
+            <div className="relative aspect-[4/3] overflow-hidden hidden md:block bg-cream-dark rounded-[5px]">
               {steps.map((step, i) => (
                 <motion.img
                   key={step.num}
@@ -107,7 +108,7 @@ export default function ProcessFlow() {
                   transition={{ duration: 0.5 }}
                 />
               ))}
-              <div className="absolute bottom-0 left-0 bg-cream px-4 py-2 text-[12px] text-warm-600 border-t border-r border-border">
+              <div className="absolute bottom-0 left-0 bg-cream/90 backdrop-blur-sm px-4 py-2 text-[11px] text-warm-500 tracking-wide">
                 Step {steps[activeStep].num} of 04
               </div>
             </div>
@@ -142,15 +143,15 @@ export default function ProcessFlow() {
                     <motion.div
                       animate={{
                         backgroundColor: isCurrent
-                          ? "#5a7350"
+                          ? "#28282a"
                           : isActive
-                          ? "#e6ebe4"
-                          : "#f5f3ef",
+                          ? "#f0efea"
+                          : "#f6f4ef",
                         borderColor: isCurrent
-                          ? "#5a7350"
+                          ? "#28282a"
                           : isActive
-                          ? "#a3b49d"
-                          : "#e8e4dd",
+                          ? "#d4d4d4"
+                          : "#e5e5e5",
                       }}
                       transition={{ duration: 0.35 }}
                       className="flex-shrink-0 w-[48px] h-[48px] rounded-full border flex items-center justify-center relative z-10"
@@ -161,7 +162,7 @@ export default function ProcessFlow() {
                           isCurrent
                             ? "text-white"
                             : isActive
-                            ? "text-sage-600"
+                            ? "text-warm-600"
                             : "text-warm-400"
                         }
                       />
@@ -172,17 +173,17 @@ export default function ProcessFlow() {
                       animate={{ opacity: isActive ? 1 : 0.4 }}
                       transition={{ duration: 0.35 }}
                     >
-                      <p className="text-[12px] text-warm-400 tracking-wide uppercase mb-1">
+                      <p className="text-[11px] text-warm-400 tracking-[0.15em] uppercase mb-1">
                         Step {step.num}
                       </p>
                       <h3
                         className={`font-serif text-[22px] font-bold mb-2 transition-colors duration-300 ${
-                          isCurrent ? "text-black" : "text-warm-600"
+                          isCurrent ? "text-warm-700" : "text-warm-500"
                         }`}
                       >
                         {step.title}
                       </h3>
-                      <p className="text-warm-600 text-[14px] leading-[1.6] max-w-sm">
+                      <p className="text-warm-500 text-[14px] leading-[1.6] max-w-sm">
                         {step.description}
                       </p>
                     </motion.div>

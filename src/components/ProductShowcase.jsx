@@ -8,6 +8,7 @@ const products = [
     category: "Bath",
     retail: 38,
     eligible: true,
+    badge: "BEST SELLER",
     image:
       "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=500&h=600&fit=crop&q=80",
   },
@@ -24,6 +25,7 @@ const products = [
     category: "Bath",
     retail: 185,
     eligible: true,
+    badge: "BEST SELLER",
     image:
       "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=500&h=600&fit=crop&q=80",
   },
@@ -48,6 +50,7 @@ const products = [
     category: "Fragrance",
     retail: 28,
     eligible: true,
+    badge: "BEST SELLER",
     image:
       "https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=500&h=600&fit=crop&q=80",
   },
@@ -91,14 +94,14 @@ function ProductCard({ product, isApproved, index }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-warm-50 mb-4">
+      <div className="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-4 rounded-[5px]">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
         />
 
-        {/* Hover actions */}
+        {/* Hover overlay with Add to Cart */}
         <AnimatePresence>
           {hovered && (
             <motion.div
@@ -106,58 +109,40 @@ function ProductCard({ product, isApproved, index }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="absolute inset-0 bg-black/10"
+              className="absolute inset-0"
             >
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-                {[
-                  { icon: Eye, label: "Quick view" },
-                  { icon: ShoppingCart, label: "Add to cart" },
-                ].map(({ icon: Icon, label }, j) => (
-                  <motion.button
-                    key={label}
-                    initial={{ y: 12, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 12, opacity: 0 }}
-                    transition={{ delay: j * 0.04 }}
-                    className="w-9 h-9 bg-white flex items-center justify-center hover:bg-warm-900 hover:text-white transition-colors cursor-pointer border-0 text-warm-800"
-                    title={label}
-                  >
-                    <Icon size={14} />
-                  </motion.button>
-                ))}
-                <motion.button
-                  initial={{ y: 12, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 12, opacity: 0 }}
-                  transition={{ delay: 0.08 }}
-                  onClick={() => setLiked(!liked)}
-                  className={`w-9 h-9 flex items-center justify-center transition-colors cursor-pointer border-0 ${
-                    liked
-                      ? "bg-red-500 text-white"
-                      : "bg-white text-warm-800 hover:bg-warm-900 hover:text-white"
-                  }`}
-                  title="Wishlist"
-                >
-                  <Heart size={14} fill={liked ? "currentColor" : "none"} />
-                </motion.button>
-              </div>
+              <motion.button
+                initial={{ y: 8, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 8, opacity: 0 }}
+                transition={{ delay: 0.02 }}
+                className="absolute bottom-3 left-3 right-3 py-2.5 bg-warm-700 text-white text-[12px] tracking-[0.1em] uppercase flex items-center justify-center gap-2 cursor-pointer border-0 rounded-[5px] hover:bg-warm-900 transition-colors"
+              >
+                <ShoppingCart size={13} />
+                Add to Cart
+              </motion.button>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Badges */}
+        {product.badge && !isApproved && (
+          <div className="absolute top-3 left-3 bg-warm-700 text-white text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-[3px]">
+            {product.badge}
+          </div>
+        )}
         {isApproved && product.eligible && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute top-3 left-3 bg-sage-600 text-white text-[11px] tracking-wide px-2.5 py-1 flex items-center gap-1"
+            className="absolute top-3 left-3 bg-sage-600 text-white text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 flex items-center gap-1 rounded-[3px]"
           >
             <Tag size={10} />
             Trade
           </motion.div>
         )}
         {isApproved && !product.eligible && (
-          <div className="absolute top-3 left-3 bg-warm-500 text-white text-[11px] tracking-wide px-2.5 py-1">
+          <div className="absolute top-3 left-3 bg-warm-500 text-white text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 rounded-[3px]">
             Retail Only
           </div>
         )}
@@ -165,17 +150,31 @@ function ProductCard({ product, isApproved, index }) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute top-3 right-3 bg-white text-sage-700 text-[11px] font-medium px-2.5 py-1"
+            className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-sage-600 text-[10px] font-medium px-2.5 py-1 rounded-[3px]"
           >
             Save {formatPrice(product.retail - tradePrice(product.retail))}
           </motion.div>
         )}
+
+        {/* Wishlist */}
+        <button
+          onClick={() => setLiked(!liked)}
+          className={`absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full transition-all cursor-pointer border-0 ${
+            isApproved && product.eligible ? "top-12" : ""
+          } ${
+            liked
+              ? "bg-red-500 text-white"
+              : "bg-white/80 text-warm-600 hover:bg-white"
+          }`}
+        >
+          <Heart size={13} fill={liked ? "currentColor" : "none"} />
+        </button>
       </div>
 
-      <p className="text-[11px] text-warm-400 tracking-wide uppercase mb-1.5">
+      <p className="text-[11px] text-warm-400 tracking-[0.12em] uppercase mb-1.5">
         {product.category}
       </p>
-      <h4 className="text-[14px] text-black mb-2 leading-snug group-hover:underline group-hover:underline-offset-2 group-hover:decoration-warm-300 transition-all">
+      <h4 className="text-[14px] text-warm-700 mb-2 leading-snug">
         {product.name}
       </h4>
 
@@ -193,7 +192,7 @@ function ProductCard({ product, isApproved, index }) {
             </span>
           </>
         ) : (
-          <span className="text-black font-medium text-[15px]">
+          <span className="text-warm-700 font-medium text-[15px]">
             {formatPrice(product.retail)}
           </span>
         )}
@@ -204,7 +203,7 @@ function ProductCard({ product, isApproved, index }) {
 
 export default function ProductShowcase({ isApproved }) {
   return (
-    <section id="collection" className="border-b border-border">
+    <section id="collection" className="bg-cream">
       <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
         {/* Header */}
         <motion.div
@@ -214,10 +213,10 @@ export default function ProductShowcase({ isApproved }) {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14"
         >
           <div>
-            <p className="text-warm-500 text-[13px] tracking-wide mb-3">
-              {isApproved ? "Trade Collection" : "Featured Products"}
+            <p className="text-warm-500 text-[12px] tracking-[0.15em] uppercase mb-3">
+              {isApproved ? "Trade Collection" : "New Arrivals"}
             </p>
-            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-black leading-[1.1]">
+            <h2 className="font-serif text-[32px] md:text-[40px] font-bold text-warm-700 leading-[1.1]">
               {isApproved ? (
                 <>
                   Your trade <em className="font-normal">pricing</em>
@@ -242,7 +241,9 @@ export default function ProductShowcase({ isApproved }) {
               </motion.div>
             )}
             <p className="text-warm-400 text-[12px]">
-              * 15% trade discount applies to eligible products only
+              {isApproved
+                ? "* 15% trade discount applies to eligible products only"
+                : "View All"}
             </p>
           </div>
         </motion.div>

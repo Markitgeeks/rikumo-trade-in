@@ -17,7 +17,7 @@ export default function App() {
   const openForm = () => setFormOpen(true);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-cream">
       <Header
         isApproved={isApproved}
         onToggleApproved={() => setIsApproved(!isApproved)}
