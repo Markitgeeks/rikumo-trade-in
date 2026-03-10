@@ -20,6 +20,23 @@ export default function Header({ isApproved, onToggleApproved }) {
           : "bg-transparent"
       }`}
     >
+      {/* Trade approved banner */}
+      <AnimatePresence>
+        {isApproved && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="bg-sage-500 text-white overflow-hidden"
+          >
+            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-2 flex items-center justify-center gap-2 text-[11px] tracking-[0.1em]">
+              <ShieldCheck size={13} />
+              <span>Designer Trade Account — 15% off eligible products applied at checkout</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -51,16 +68,16 @@ export default function Header({ isApproved, onToggleApproved }) {
 
             <button
               onClick={onToggleApproved}
-              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] tracking-[0.05em] font-medium transition-all duration-300 cursor-pointer ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-[11px] tracking-[0.05em] font-medium transition-all duration-300 cursor-pointer ${
                 isApproved
-                  ? "bg-sage-500 text-white border border-sage-500"
+                  ? "bg-sage-500 text-white border border-sage-500 shadow-sm"
                   : scrolled
                   ? "bg-transparent text-warm-500 border border-warm-300 hover:border-warm-500"
                   : "bg-white/10 text-white/80 border border-white/20 hover:bg-white/20"
               }`}
             >
               {isApproved && <ShieldCheck size={12} />}
-              {isApproved ? "Trade Account" : "Preview Trade View"}
+              {isApproved ? "Designer Trade Approved" : "Toggle Trade View"}
             </button>
           </nav>
 
