@@ -41,7 +41,6 @@ export default function ThreePaths({ onApplyClick }) {
   return (
     <section id="programs" className="border-b border-border">
       <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +51,7 @@ export default function ThreePaths({ onApplyClick }) {
             <p className="text-warm-500 text-[13px] tracking-wide mb-3">
               Choose Your Path
             </p>
-            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-warm-900 leading-[1.1]">
+            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-black leading-[1.1]">
               Three ways to
               <br />
               work with us
@@ -64,7 +63,6 @@ export default function ThreePaths({ onApplyClick }) {
           </p>
         </motion.div>
 
-        {/* Cards */}
         <div className="grid md:grid-cols-3 gap-px bg-border">
           {paths.map((path, i) => (
             <motion.div
@@ -73,9 +71,8 @@ export default function ThreePaths({ onApplyClick }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-cream group"
+              className="bg-white group"
             >
-              {/* Image */}
               <div className="aspect-[5/3] overflow-hidden">
                 <img
                   src={path.image}
@@ -83,13 +80,11 @@ export default function ThreePaths({ onApplyClick }) {
                   className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 />
               </div>
-
-              {/* Content */}
               <div className="p-6 md:p-8">
                 <p className="text-warm-400 text-[12px] tracking-wide uppercase mb-2">
                   {path.label}
                 </p>
-                <h3 className="font-serif text-[24px] font-bold text-warm-900 mb-3">
+                <h3 className="font-serif text-[24px] font-bold text-black mb-3">
                   {path.title}
                 </h3>
                 <p className="text-warm-600 text-[14px] leading-[1.6] mb-6">
@@ -99,21 +94,20 @@ export default function ThreePaths({ onApplyClick }) {
                 {path.label === "Designer Trade" ? (
                   <button
                     onClick={onApplyClick}
-                    className="inline-flex items-center gap-1.5 text-[14px] text-warm-900 font-medium cursor-pointer bg-transparent border-0 p-0 underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors"
+                    className="px-6 py-3 bg-black text-white text-[13px] hover:opacity-80 transition-opacity cursor-pointer border-0 flex items-center gap-1.5"
                   >
                     {path.cta}
-                    <ArrowUpRight size={14} />
+                    <ArrowUpRight size={13} />
                   </button>
                 ) : (
                   <a
                     href={path.href}
                     target={path.external ? "_blank" : undefined}
                     rel={path.external ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-1.5 text-[14px] text-warm-900 font-medium underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors no-underline"
-                    style={{ textDecoration: "underline" }}
+                    className="inline-flex items-center gap-1.5 text-[14px] text-black underline underline-offset-4 decoration-warm-300 hover:decoration-black transition-colors"
                   >
                     {path.cta}
-                    <ArrowUpRight size={14} />
+                    <ArrowUpRight size={13} />
                   </a>
                 )}
               </div>

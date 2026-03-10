@@ -31,7 +31,7 @@ export default function WholesaleBlock() {
             <p className="text-warm-500 text-[13px] tracking-wide mb-3">
               Wholesale
             </p>
-            <h2 className="font-serif text-[36px] font-bold text-warm-900 leading-[1.1] mb-4">
+            <h2 className="font-serif text-[36px] font-bold text-black leading-[1.1] mb-4">
               Looking for volume
               <br />
               <em className="font-normal">pricing?</em>
@@ -45,7 +45,7 @@ export default function WholesaleBlock() {
               href="https://morihata.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[14px] text-warm-900 font-medium underline underline-offset-4 decoration-warm-300 hover:decoration-warm-900 transition-colors"
+              className="inline-flex items-center gap-1.5 text-[14px] text-black font-medium underline underline-offset-4 decoration-warm-300 hover:decoration-black transition-colors"
             >
               Visit Morihata.com
               <ArrowUpRight size={14} />

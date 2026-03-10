@@ -37,10 +37,10 @@ const PURCHASE_FREQUENCIES = [
 ];
 
 const inputClass =
-  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-warm-900 placeholder:text-warm-400 focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all";
+  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-black placeholder:text-warm-400 focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all";
 
 const selectClass =
-  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-warm-900 focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all cursor-pointer appearance-none";
+  "w-full px-4 py-3 bg-cream border border-border text-[14px] text-black focus:outline-none focus:border-sage-400 focus:ring-1 focus:ring-sage-100 transition-all cursor-pointer appearance-none";
 
 export default function ApplicationForm({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
@@ -64,7 +64,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-warm-900/40 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm overflow-y-auto"
           onClick={(e) => e.target === e.currentTarget && handleClose()}
         >
           <div className="min-h-full flex items-start justify-center py-8 px-4 md:py-12">
@@ -78,7 +78,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
               {/* Close */}
               <button
                 onClick={handleClose}
-                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-warm-400 hover:text-warm-900 transition-colors cursor-pointer bg-transparent border border-border hover:border-warm-400 z-20"
+                className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-warm-400 hover:text-black transition-colors cursor-pointer bg-transparent border border-border hover:border-warm-400 z-20"
               >
                 <X size={14} />
               </button>
@@ -96,7 +96,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
                       <p className="text-warm-500 text-[13px] tracking-wide mb-2">
                         Trade Program
                       </p>
-                      <h3 className="font-serif text-[28px] font-bold text-warm-900 mb-2">
+                      <h3 className="font-serif text-[28px] font-bold text-black mb-2">
                         Apply for Designer Trade
                       </h3>
                       <p className="text-warm-500 text-[14px] leading-[1.6]">
@@ -242,7 +242,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
                           disabled={!agreed}
                           className={`w-full py-3.5 text-[14px] font-medium flex items-center justify-center gap-2 transition-all cursor-pointer border-0 ${
                             agreed
-                              ? "bg-warm-900 text-white hover:bg-warm-800"
+                              ? "bg-black text-white hover:opacity-80"
                               : "bg-warm-100 text-warm-400 cursor-not-allowed"
                           }`}
                         >
@@ -268,7 +268,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
                       <CheckCircle2 size={28} className="text-sage-600" />
                     </motion.div>
 
-                    <h3 className="font-serif text-[26px] font-bold text-warm-900 mb-2">
+                    <h3 className="font-serif text-[26px] font-bold text-black mb-2">
                       Application Received
                     </h3>
                     <p className="text-warm-500 text-[14px] leading-[1.6] max-w-sm mx-auto mb-8">
@@ -294,7 +294,7 @@ export default function ApplicationForm({ isOpen, onClose }) {
                             {item.n}
                           </div>
                           <div>
-                            <p className="text-warm-900 text-[13px] font-medium">{item.t}</p>
+                            <p className="text-black text-[13px] font-medium">{item.t}</p>
                             <p className="text-warm-400 text-[12px]">{item.d}</p>
                           </div>
                         </motion.div>

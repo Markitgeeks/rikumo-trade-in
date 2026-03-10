@@ -7,16 +7,16 @@ export default function Header({ isApproved, onToggleApproved }) {
 
   return (
     <>
-      {/* Approved banner */}
+      {/* Trade banner */}
       <AnimatePresence>
         {isApproved && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="bg-sage-600 text-white overflow-hidden"
+            className="bg-black text-white overflow-hidden"
           >
-            <div className="max-w-[1300px] mx-auto px-8 py-2.5 flex items-center justify-center gap-2 text-[12px] tracking-wide">
+            <div className="max-w-[1300px] mx-auto px-8 py-2.5 flex items-center justify-center gap-2 text-[12px]">
               <ShieldCheck size={13} />
               Designer Trade Account Active — 15% off eligible products
             </div>
@@ -24,11 +24,14 @@ export default function Header({ isApproved, onToggleApproved }) {
         )}
       </AnimatePresence>
 
-      <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-border">
+      <header
+        className="sticky top-0 z-50 bg-white"
+        style={{ boxShadow: "0 6px 6px rgba(0,0,0,0.06)" }}
+      >
         <div className="max-w-[1300px] mx-auto px-8 flex items-center justify-between h-[70px]">
           {/* Logo */}
           <a href="#" className="no-underline">
-            <span className="font-serif text-[22px] font-bold text-warm-900 tracking-wide">
+            <span className="font-serif text-[24px] font-bold italic text-black">
               Rikumo
             </span>
           </a>
@@ -44,21 +47,21 @@ export default function Header({ isApproved, onToggleApproved }) {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-[14px] text-warm-700 hover:text-warm-900 no-underline transition-colors"
+                className="text-[14px] text-warm-700 hover:text-black no-underline transition-colors"
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* Right side */}
+          {/* Right */}
           <div className="hidden md:flex items-center gap-4">
             <button
               onClick={onToggleApproved}
-              className={`text-[13px] px-5 py-2 transition-all cursor-pointer border ${
+              className={`text-[13px] px-5 py-2.5 transition-all cursor-pointer ${
                 isApproved
-                  ? "bg-sage-600 text-white border-sage-600"
-                  : "bg-transparent text-warm-700 border-border hover:border-warm-400"
+                  ? "bg-black text-white border border-black"
+                  : "bg-white text-black border border-border hover:bg-black hover:text-white hover:border-black"
               }`}
             >
               {isApproved ? "Trade Account Active" : "Preview Trade View"}
@@ -68,7 +71,7 @@ export default function Header({ isApproved, onToggleApproved }) {
           {/* Mobile */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 cursor-pointer bg-transparent border-0 text-warm-900"
+            className="md:hidden p-2 cursor-pointer bg-transparent border-0 text-black"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -80,7 +83,7 @@ export default function Header({ isApproved, onToggleApproved }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-border overflow-hidden bg-cream"
+              className="md:hidden border-t border-border overflow-hidden bg-white"
             >
               <div className="px-8 py-6 space-y-4">
                 {["Programs", "How It Works", "Collection"].map((item) => (
@@ -88,17 +91,14 @@ export default function Header({ isApproved, onToggleApproved }) {
                     key={item}
                     href={`#${item.toLowerCase().replace(/ /g, "")}`}
                     onClick={() => setMobileOpen(false)}
-                    className="block text-[14px] text-warm-700 no-underline"
+                    className="block text-[14px] text-warm-600 no-underline"
                   >
                     {item}
                   </a>
                 ))}
                 <button
-                  onClick={() => {
-                    onToggleApproved();
-                    setMobileOpen(false);
-                  }}
-                  className="text-[13px] text-sage-600 bg-transparent border-0 cursor-pointer p-0"
+                  onClick={() => { onToggleApproved(); setMobileOpen(false); }}
+                  className="text-[13px] text-black bg-transparent border-0 cursor-pointer p-0 underline"
                 >
                   {isApproved ? "Exit Trade View" : "Preview Trade View"}
                 </button>

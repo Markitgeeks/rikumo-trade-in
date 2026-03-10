@@ -13,7 +13,7 @@ export default function CtaBanner({ onApplyClick }) {
             <p className="text-warm-500 text-[13px] tracking-wide mb-3">
               Ready?
             </p>
-            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-warm-900 leading-[1.1] mb-4">
+            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-black leading-[1.1] mb-4">
               Apply for designer
               <br />
               <em className="font-normal">trade pricing</em>
@@ -33,7 +33,7 @@ export default function CtaBanner({ onApplyClick }) {
           >
             <button
               onClick={onApplyClick}
-              className="px-8 py-3.5 bg-warm-900 text-white text-[14px] hover:bg-warm-800 transition-colors cursor-pointer border-0 mb-3"
+              className="px-8 py-3.5 bg-black text-white text-[14px] hover:opacity-80 transition-opacity cursor-pointer border-0 mb-3"
             >
               Start Your Application
             </button>

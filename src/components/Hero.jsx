@@ -20,7 +20,7 @@ export default function Hero({ onApplyClick }) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="font-serif text-[42px] md:text-[56px] leading-[1.1] font-bold text-warm-900 mb-6"
+              className="font-serif text-[42px] md:text-[56px] leading-[1.1] font-bold text-black mb-6"
             >
               Designed for
               <br />
@@ -46,13 +46,13 @@ export default function Hero({ onApplyClick }) {
             >
               <button
                 onClick={onApplyClick}
-                className="px-7 py-3 bg-warm-900 text-white text-[14px] hover:bg-warm-800 transition-colors cursor-pointer border-0"
+                className="px-7 py-3.5 bg-black text-white text-[14px] hover:opacity-80 transition-opacity cursor-pointer border-0"
               >
                 Apply for Trade
               </button>
               <a
                 href="#programs"
-                className="text-[14px] text-warm-700 underline underline-offset-4 decoration-warm-300 hover:decoration-warm-700 transition-colors no-underline hover:underline"
+                className="text-[14px] text-black underline underline-offset-4 decoration-warm-300 hover:decoration-black transition-colors"
               >
                 Learn more
               </a>
@@ -71,7 +71,7 @@ export default function Hero({ onApplyClick }) {
                 { value: "2–3 days", label: "Approval Time" },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-serif text-[28px] font-bold text-warm-900 leading-none mb-1">
+                  <p className="font-serif text-[28px] font-bold text-black leading-none mb-1">
                     {stat.value}
                   </p>
                   <p className="text-warm-500 text-[12px]">{stat.label}</p>

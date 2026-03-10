@@ -66,7 +66,7 @@ export default function ProcessFlow() {
     <section
       id="process"
       ref={sectionRef}
-      className="border-b border-border"
+      className="border-b border-border bg-white"
     >
       <div className="max-w-[1300px] mx-auto px-8 py-20 md:py-28">
         <div className="grid md:grid-cols-2 gap-16">
@@ -80,7 +80,7 @@ export default function ProcessFlow() {
               <p className="text-warm-500 text-[13px] tracking-wide mb-3">
                 How It Works
               </p>
-              <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-warm-900 leading-[1.1] mb-4">
+              <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-black leading-[1.1] mb-4">
                 From application
                 <br />
                 to <em className="font-normal">trade pricing</em>
@@ -92,7 +92,7 @@ export default function ProcessFlow() {
             </motion.div>
 
             {/* Dynamic image */}
-            <div className="relative aspect-[4/3] overflow-hidden hidden md:block bg-cream-dark">
+            <div className="relative aspect-[4/3] overflow-hidden hidden md:block bg-warm-50">
               {steps.map((step, i) => (
                 <motion.img
                   key={step.num}
@@ -177,7 +177,7 @@ export default function ProcessFlow() {
                       </p>
                       <h3
                         className={`font-serif text-[22px] font-bold mb-2 transition-colors duration-300 ${
-                          isCurrent ? "text-warm-900" : "text-warm-600"
+                          isCurrent ? "text-black" : "text-warm-600"
                         }`}
                       >
                         {step.title}

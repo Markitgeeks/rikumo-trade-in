@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-12 gap-10 mb-14">
           {/* Brand */}
           <div className="md:col-span-4">
-            <span className="font-serif text-[20px] font-bold text-warm-900 tracking-wide">
+            <span className="font-serif text-[20px] font-bold text-black tracking-wide">
               Rikumo
             </span>
             <p className="text-warm-500 text-[14px] mt-3 leading-[1.6] max-w-xs">
@@ -26,7 +26,7 @@ export default function Footer() {
                   href="https://rikumo.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-warm-600 text-[14px] hover:text-warm-900 transition-colors no-underline"
+                  className="block text-warm-600 text-[14px] hover:text-black transition-colors no-underline"
                 >
                   {l}
                 </a>
@@ -41,7 +41,7 @@ export default function Footer() {
             <div className="space-y-2">
               <a
                 href="#programs"
-                className="block text-warm-600 text-[14px] hover:text-warm-900 transition-colors no-underline"
+                className="block text-warm-600 text-[14px] hover:text-black transition-colors no-underline"
               >
                 Designer Trade
               </a>
@@ -49,7 +49,7 @@ export default function Footer() {
                 href="https://morihata.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-warm-600 text-[14px] hover:text-warm-900 transition-colors no-underline"
+                className="block text-warm-600 text-[14px] hover:text-black transition-colors no-underline"
               >
                 Wholesale
               </a>

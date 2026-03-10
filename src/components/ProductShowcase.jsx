@@ -91,7 +91,7 @@ function ProductCard({ product, isApproved, index }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-cream-dark mb-4">
+      <div className="relative aspect-[3/4] overflow-hidden bg-warm-50 mb-4">
         <img
           src={product.image}
           alt={product.name}
@@ -175,7 +175,7 @@ function ProductCard({ product, isApproved, index }) {
       <p className="text-[11px] text-warm-400 tracking-wide uppercase mb-1.5">
         {product.category}
       </p>
-      <h4 className="text-[14px] text-warm-900 mb-2 leading-snug group-hover:underline group-hover:underline-offset-2 group-hover:decoration-warm-300 transition-all">
+      <h4 className="text-[14px] text-black mb-2 leading-snug group-hover:underline group-hover:underline-offset-2 group-hover:decoration-warm-300 transition-all">
         {product.name}
       </h4>
 
@@ -193,7 +193,7 @@ function ProductCard({ product, isApproved, index }) {
             </span>
           </>
         ) : (
-          <span className="text-warm-900 font-medium text-[15px]">
+          <span className="text-black font-medium text-[15px]">
             {formatPrice(product.retail)}
           </span>
         )}
@@ -217,7 +217,7 @@ export default function ProductShowcase({ isApproved }) {
             <p className="text-warm-500 text-[13px] tracking-wide mb-3">
               {isApproved ? "Trade Collection" : "Featured Products"}
             </p>
-            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-warm-900 leading-[1.1]">
+            <h2 className="font-serif text-[36px] md:text-[44px] font-bold text-black leading-[1.1]">
               {isApproved ? (
                 <>
                   Your trade <em className="font-normal">pricing</em>

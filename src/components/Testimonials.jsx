@@ -48,7 +48,7 @@ export default function Testimonials() {
             <p className="text-warm-500 text-[13px] tracking-wide mb-3">
               Testimonials
             </p>
-            <h2 className="font-serif text-[36px] font-bold text-warm-900 leading-[1.1] mb-8">
+            <h2 className="font-serif text-[36px] font-bold text-black leading-[1.1] mb-8">
               Trusted by <em className="font-normal">designers</em>
             </h2>
 
@@ -67,7 +67,7 @@ export default function Testimonials() {
                   className="w-14 h-14 rounded-full object-cover"
                 />
                 <div>
-                  <p className="text-warm-900 text-[14px] font-medium">
+                  <p className="text-black text-[14px] font-medium">
                     {t.name}
                   </p>
                   <p className="text-warm-500 text-[13px]">{t.title}</p>
@@ -80,13 +80,13 @@ export default function Testimonials() {
             <div className="flex items-center gap-3">
               <button
                 onClick={prev}
-                className="w-10 h-10 border border-border flex items-center justify-center text-warm-600 hover:bg-warm-900 hover:text-white hover:border-warm-900 transition-all cursor-pointer bg-transparent"
+                className="w-10 h-10 border border-border flex items-center justify-center text-warm-600 hover:bg-black hover:text-white hover:border-black transition-all cursor-pointer bg-transparent"
               >
                 <ArrowLeft size={16} />
               </button>
               <button
                 onClick={next}
-                className="w-10 h-10 border border-border flex items-center justify-center text-warm-600 hover:bg-warm-900 hover:text-white hover:border-warm-900 transition-all cursor-pointer bg-transparent"
+                className="w-10 h-10 border border-border flex items-center justify-center text-warm-600 hover:bg-black hover:text-white hover:border-black transition-all cursor-pointer bg-transparent"
               >
                 <ArrowRight size={16} />
               </button>
